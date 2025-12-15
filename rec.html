@@ -1,0 +1,2888 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Recommendation Page Specific Styles */
+      .rec-hero {
+        text-align: center;
+        padding: 6rem 2rem 3rem 2rem;
+        background: linear-gradient(
+          135deg,
+          #ea90bb 0%,
+          #f8c199 50%,
+          #78b58b 100%
+        );
+        border-radius: 0 0 40px 40px;
+        margin-bottom: 3rem;
+      }
+
+      .rec-hero-title {
+        font-family: "Anton", sans-serif;
+        color: #2c3fab;
+        font-size: 3.5rem;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5);
+      }
+
+      .rec-hero-subtitle {
+        font-family: "Source Sans Pro", sans-serif;
+        font-size: 1.3rem;
+        color: #333;
+        font-weight: 600;
+        max-width: 600px;
+        margin: 0 auto 2rem;
+      }
+
+      .filter-section {
+        background: rgba(44, 63, 171, 0.9);
+        padding: 2rem;
+        border-radius: 20px;
+        margin: 0 2rem 3rem 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .filter-title {
+        font-family: "Anton", sans-serif;
+        color: #f7e8a1;
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Search Bar Styling */
+      .search-bar {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .search-bar input {
+        flex: 1;
+        padding: 0.8rem 1.5rem;
+        border: 2px solid #f7e8a1;
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        font-family: "Source Sans Pro", sans-serif;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .search-bar input:focus {
+        outline: none;
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 10px rgba(247, 232, 161, 0.5);
+      }
+
+      .search-bar input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .search-bar button {
+        padding: 0.8rem 2rem;
+        background: #f7e8a1;
+        color: #2c3fab;
+        border: none;
+        border-radius: 30px;
+        font-family: "Anton", sans-serif;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .search-bar button:hover {
+        background: white;
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(247, 232, 161, 0.4);
+      }
+
+      .filter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .filter-group {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1.5rem;
+        border-radius: 15px;
+        border: 2px solid rgba(247, 232, 161, 0.3);
+        text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+      }
+
+      .filter-group h3 {
+        font-family: "Anton", sans-serif;
+        color: #f7e8a1;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+      }
+
+      .filter-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .filter-btn {
+        padding: 0.5rem 1rem;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border-radius: 20px;
+        font-family: "Source Sans Pro", sans-serif;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .filter-btn:hover {
+        background: rgba(247, 232, 161, 0.3);
+        transform: translateY(-2px);
+      }
+
+      .filter-btn.active {
+        background: #f7e8a1;
+        color: #2c3fab;
+        border-color: #f7e8a1;
+        transform: translateY(-2px);
+      }
+
+      .filter-actions {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .action-btn {
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 30px;
+        font-family: "Anton", sans-serif;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .search-btn {
+        background: #f7e8a1;
+        color: #2c3fab;
+      }
+
+      .search-btn:hover {
+        background: white;
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(247, 232, 161, 0.4);
+      }
+
+      .random-btn {
+        background: linear-gradient(45deg, #9d4edd, #7b2cbf);
+        color: white;
+      }
+
+      .random-btn:hover {
+        background: linear-gradient(45deg, #7b2cbf, #9d4edd);
+        box-shadow: 0 5px 15px rgba(157, 78, 221, 0.4);
+        transform: scale(1.05);
+      }
+
+      .random-combo-btn {
+        background: linear-gradient(45deg, #ea90bb, #9d4edd);
+        color: white;
+      }
+
+      .random-combo-btn:hover {
+        background: linear-gradient(45deg, #9d4edd, #ea90bb);
+        box-shadow: 0 5px 15px rgba(157, 78, 221, 0.4);
+        transform: scale(1.05);
+      }
+
+      .reset-btn {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border: 2px solid #f7e8a1;
+      }
+
+      .reset-btn:hover {
+        background: rgba(247, 232, 161, 0.2);
+        transform: scale(1.05);
+      }
+
+      /* Favorites Section */
+      .favorites-section {
+        background: rgba(44, 63, 171, 0.95);
+        padding: 2rem;
+        margin: 0 2rem 2rem 2rem;
+        border-radius: 20px;
+        border: 3px solid #f7e8a1;
+      }
+
+      .favorites-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .favorites-title {
+        font-family: "Anton", sans-serif;
+        color: #f7e8a1;
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+      }
+
+      .favorites-count {
+        background: #ee6986;
+        color: white;
+        padding: 0.2rem 0.8rem;
+        border-radius: 20px;
+        font-size: 1rem;
+        margin-left: 0.5rem;
+      }
+
+      .favorites-actions {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      .view-all-btn,
+      .view-favorites-btn {
+        padding: 0.6rem 1.5rem;
+        background: #f7e8a1;
+        color: #2c3fab;
+        border: none;
+        border-radius: 20px;
+        font-family: "Anton", sans-serif;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .view-all-btn:hover,
+      .view-favorites-btn:hover {
+        background: white;
+        transform: scale(1.05);
+      }
+
+      .clear-favorites-btn {
+        padding: 0.6rem 1.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border: 2px solid #ee6986;
+        border-radius: 20px;
+        font-family: "Source Sans Pro", sans-serif;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .clear-favorites-btn:hover {
+        background: #ee6986;
+        color: white;
+      }
+
+      .favorites-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .no-favorites {
+        text-align: center;
+        padding: 2rem;
+        display: none;
+      }
+
+      .no-favorites i {
+        font-size: 3rem;
+        color: #f7e8a1;
+        margin-bottom: 1rem;
+      }
+
+      .no-favorites h3 {
+        font-family: "Anton", sans-serif;
+        color: #f7e8a1;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .no-favorites p {
+        font-family: "Source Sans Pro", sans-serif;
+        color: white;
+        font-size: 0.95rem;
+      }
+
+      /* ========== REFERENCE IMAGE GALLERY ========== */
+      .reference-section {
+        padding: 0 2rem 3rem 2rem;
+      }
+
+      .reference-title {
+        font-family: "Anton", sans-serif;
+        color: #f7e8a1;
+        font-size: 2.2rem;
+        text-align: center;
+        margin-bottom: 2.5rem;
+        text-transform: uppercase;
+      }
+
+      .season-gallery {
+        margin-bottom: 3rem;
+      }
+
+      .season-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid;
+      }
+
+      .spring-header {
+        border-color: #ea90bb;
+      }
+      .summer-header {
+        border-color: #4a5fd8;
+      }
+      .autumn-header {
+        border-color: #f8c199;
+      }
+      .winter-header {
+        border-color: #333;
+      }
+
+      .season-icon {
+        font-size: 2rem;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: white;
+      }
+
+      .spring-icon {
+        background: #ea90bb;
+      }
+      .summer-icon {
+        background: #4a5fd8;
+      }
+      .autumn-icon {
+        background: #f8c199;
+        color: #333;
+      }
+      .winter-icon {
+        background: #333;
+      }
+
+      .season-name {
+        font-family: "Anton", sans-serif;
+        font-size: 1.8rem;
+        color: #f7e8a1;
+      }
+
+      /* Slider Container Styles */
+      .slider-container {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 2rem;
+      }
+
+      .slider-wrapper {
+        display: flex;
+        transition: transform 0.5s ease;
+        gap: 1.5rem;
+      }
+
+      .gallery-item {
+        flex: 0 0 calc(16.666% - 1.25rem); /* 6 items visible */
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        height: 250px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .image-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(
+          to top,
+          rgba(44, 63, 171, 0.9),
+          transparent
+        );
+        color: white;
+        padding: 1rem;
+        font-family: "Source Sans Pro", sans-serif;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-item:hover .image-overlay {
+        transform: translateY(0);
+      }
+
+      .image-title {
+        font-weight: 600;
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .image-desc {
+        font-size: 0.85rem;
+        opacity: 0.9;
+      }
+
+      .slider-controls {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .slider-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(247, 232, 161, 0.9);
+        border: none;
+        color: #2c3fab;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .slider-btn:hover {
+        background: white;
+        transform: scale(1.1);
+        box-shadow: 0 5px 15px rgba(247, 232, 161, 0.4);
+      }
+
+      .slider-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .slider-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .slider-dot.active {
+        background: #f7e8a1;
+        transform: scale(1.2);
+      }
+
+      /* Style Collections */
+      .style-collection {
+        background: rgba(44, 63, 171, 0.1);
+        padding: 1.5rem;
+        border-radius: 20px;
+        margin-bottom: 2rem;
+      }
+
+      .style-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .style-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: white;
+      }
+
+      .edgy-icon {
+        background: #333;
+      }
+
+      .romantic-icon {
+        background: #ea90bb;
+      }
+
+      .party-icon {
+        background: #9d4edd;
+      }
+
+      .minimalist-icon {
+        background: #f7e8a1;
+        color: #2c3fab;
+      }
+
+      .cozy-icon {
+        background: #f8c199;
+        color: #333;
+      }
+
+      .festival-icon {
+        background: linear-gradient(45deg, #f7e8a1, #ea90bb, #9d4edd);
+        color: white;
+      }
+
+      .statement-icon {
+        background: linear-gradient(45deg, #4a5fd8, #9d4edd);
+        color: white;
+      }
+
+      .style-name {
+        font-family: "Anton", sans-serif;
+        font-size: 1.5rem;
+        color: #f7e8a1;
+      }
+
+      /* Outfit Gallery */
+      .outfit-gallery {
+        padding: 0 2rem 4rem 2rem;
+      }
+
+      .gallery-title {
+        font-family: "Anton", sans-serif;
+        color: #f7e8a1;
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+      }
+
+      .outfit-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .outfit-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .outfit-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .outfit-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-bottom: 3px solid;
+      }
+
+      .outfit-info {
+        padding: 1.5rem;
+      }
+
+      .outfit-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .tag {
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-family: "Source Sans Pro", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .tag-season {
+        background: #78b58b;
+        color: white;
+      }
+
+      .tag-color {
+        background: #ea90bb;
+        color: white;
+      }
+
+      .tag-mood {
+        background: #f8c199;
+        color: #333;
+      }
+
+      .outfit-title {
+        font-family: "Anton", sans-serif;
+        font-size: 1.3rem;
+        color: #2c3fab;
+        margin-bottom: 0.5rem;
+      }
+
+      .outfit-description {
+        font-family: "Source Sans Pro", sans-serif;
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .save-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2rem;
+        color: #2c3fab;
+        transition: all 0.3s ease;
+        z-index: 10;
+      }
+
+      .save-btn:hover {
+        background: #f7e8a1;
+        transform: scale(1.1);
+      }
+
+      .saved-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        background: #78b58b;
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-family: "Source Sans Pro", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-top: 0.5rem;
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 3rem;
+        grid-column: 1 / -1;
+      }
+
+      .no-results i {
+        font-size: 3rem;
+        color: #f7e8a1;
+        margin-bottom: 1rem;
+      }
+
+      .no-results h3 {
+        font-family: "Anton", sans-serif;
+        color: #f7e8a1;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .no-results p {
+        font-family: "Source Sans Pro", sans-serif;
+        color: white;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .color-palette {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .color-dot {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2px solid white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Color classes for filters */
+      .color-red {
+        background: #ee6986;
+        border-color: #ee6986;
+      }
+
+      .color-blue {
+        background: #4a5fd8;
+        border-color: #4a5fd8;
+      }
+
+      .color-green {
+        background: #78b58b;
+        border-color: #78b58b;
+      }
+
+      .color-yellow {
+        background: #f7e8a1;
+        border-color: #f7e8a1;
+      }
+
+      .color-purple {
+        background: #9d4edd;
+        border-color: #9d4edd;
+      }
+
+      .color-black {
+        background: #333;
+        border-color: #333;
+      }
+
+      .color-white {
+        background: #fff;
+        border-color: #fff;
+      }
+
+      .color-orange {
+        background: #f8c199;
+        border-color: #f8c199;
+      }
+
+      .color-pink {
+        background: #ea90bb;
+        border-color: #ea90bb;
+      }
+
+      /* Color classes for outfit images */
+      .border-red {
+        border-color: #ee6986;
+      }
+
+      .border-blue {
+        border-color: #4a5fd8;
+      }
+
+      .border-green {
+        border-color: #78b58b;
+      }
+
+      .border-yellow {
+        border-color: #f7e8a1;
+      }
+
+      .border-purple {
+        border-color: #9d4edd;
+      }
+
+      .border-orange {
+        border-color: #f8c199;
+      }
+
+      .border-pink {
+        border-color: #ea90bb;
+      }
+
+      @media (max-width: 768px) {
+        .rec-hero-title {
+          font-size: 2.5rem;
+        }
+
+        .filter-section {
+          margin: 0 1rem 2rem 1rem;
+          padding: 1.5rem;
+        }
+
+        .favorites-section {
+          margin: 0 1rem 2rem 1rem;
+          padding: 1.5rem;
+        }
+
+        .reference-section {
+          padding: 0 1rem 2rem 1rem;
+        }
+
+        .outfit-gallery {
+          padding: 0 1rem 3rem 1rem;
+        }
+
+        .gallery-item {
+          flex: 0 0 calc(50% - 0.75rem); /* 2 items visible on mobile */
+          height: 200px;
+        }
+
+        .outfit-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .favorites-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .filter-actions {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .action-btn {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .favorites-header {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .favorites-actions {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .favorites-header > * {
+          text-align: center;
+        }
+
+        .season-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .gallery-item {
+          flex: 0 0 100%; /* 1 item visible on very small screens */
+        }
+      }
+    </style>
+    <title>NAVÉ - Recommendation</title>
+  </head>
+  <body>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="rec.html">Recomendation</a></li>
+        <li><a href="funfact.html">Fun Fact</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <div class="cinzel">NAVÉ</div>
+    </nav>
+
+    <section class="rec-hero">
+      <h1 class="rec-hero-title">Style Recommender</h1>
+      <p class="rec-hero-subtitle">
+        Find your perfect outfit based on season, color, and mood. Mix & match
+        to create looks that reflect your unique personality!
+      </p>
+    </section>
+
+    <main>
+      <section class="filter-section">
+        <h2 class="filter-title">What's Your Style Vibe Today?</h2>
+
+        <div class="search-bar">
+          <input
+            type="text"
+            id="keywordSearch"
+            placeholder="Search outfit ideas (e.g., 'floral', 'jeans', 'party')"
+          />
+          <button onclick="searchByKeyword()">
+            <i class="fas fa-search"></i> Search
+          </button>
+        </div>
+
+        <div class="filter-grid">
+          <div class="filter-group">
+            <h3>Season</h3>
+            <div class="filter-options">
+              <button
+                class="filter-btn"
+                data-filter="season"
+                data-value="spring"
+              >
+                Spring
+              </button>
+              <button
+                class="filter-btn"
+                data-filter="season"
+                data-value="summer"
+              >
+                Summer
+              </button>
+              <button
+                class="filter-btn"
+                data-filter="season"
+                data-value="autumn"
+              >
+                Autumn
+              </button>
+              <button
+                class="filter-btn"
+                data-filter="season"
+                data-value="winter"
+              >
+                Winter
+              </button>
+              <button
+                class="filter-btn"
+                data-filter="season"
+                data-value="all-season"
+              >
+                All Season
+              </button>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h3>Color Palette</h3>
+            <div class="filter-options">
+              <button class="filter-btn" data-filter="color" data-value="red">
+                Warm
+              </button>
+              <button class="filter-btn" data-filter="color" data-value="blue">
+                Cool
+              </button>
+              <button
+                class="filter-btn"
+                data-filter="color"
+                data-value="neutral"
+              >
+                Neutral
+              </button>
+              <button
+                class="filter-btn"
+                data-filter="color"
+                data-value="pastel"
+              >
+                Pastel
+              </button>
+              <button
+                class="filter-btn"
+                data-filter="color"
+                data-value="vibrant"
+              >
+                Vibrant
+              </button>
+            </div>
+            <div class="color-palette">
+              <div class="color-dot color-red" title="Red"></div>
+              <div class="color-dot color-blue" title="Blue"></div>
+              <div class="color-dot color-green" title="Green"></div>
+              <div class="color-dot color-yellow" title="Yellow"></div>
+              <div class="color-dot color-purple" title="Purple"></div>
+              <div class="color-dot color-pink" title="Pink"></div>
+              <div class="color-dot color-orange" title="Orange"></div>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h3>Mood & Occasion</h3>
+            <div class="filter-options">
+              <button class="filter-btn" data-filter="mood" data-value="casual">
+                Casual
+              </button>
+              <button
+                class="filter-btn"
+                data-filter="mood"
+                data-value="elegant"
+              >
+                Elegant
+              </button>
+              <button class="filter-btn" data-filter="mood" data-value="edgy">
+                Edgy
+              </button>
+              <button
+                class="filter-btn"
+                data-filter="mood"
+                data-value="romantic"
+              >
+                Romantic
+              </button>
+              <button class="filter-btn" data-filter="mood" data-value="bold">
+                Bold
+              </button>
+              <button
+                class="filter-btn"
+                data-filter="mood"
+                data-value="minimalist"
+              >
+                Minimalist
+              </button>
+              <button class="filter-btn" data-filter="mood" data-value="party">
+                Party
+              </button>
+              <button class="filter-btn" data-filter="mood" data-value="work">
+                Work
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-actions">
+          <button class="action-btn search-btn" id="searchOutfits">
+            <i class="fas fa-search"></i> Find My Style
+          </button>
+          <button class="action-btn random-btn" id="randomOutfitSimple">
+            <i class="fas fa-random"></i> Surprise Outfit
+          </button>
+          <button class="action-btn random-combo-btn" id="randomOutfitCombo">
+            <i class="fas fa-dice"></i> Random Combo
+          </button>
+          <button class="action-btn reset-btn" id="resetFilters">
+            <i class="fas fa-redo"></i> Reset Filters
+          </button>
+        </div>
+      </section>
+
+      <!-- Favorites Section -->
+      <section class="favorites-section" id="favoritesSection">
+        <div class="favorites-header">
+          <h2 class="favorites-title">
+            <i class="fas fa-heart"></i> My Saved Outfits
+            <span class="favorites-count" id="favoritesCount">0</span>
+          </h2>
+          <div class="favorites-actions">
+            <button class="view-all-btn" id="viewAllBtn">
+              View All Outfits
+            </button>
+            <button
+              class="view-favorites-btn"
+              id="viewFavoritesBtn"
+              style="display: none"
+            >
+              View My Favorites
+            </button>
+            <button class="clear-favorites-btn" id="clearFavoritesBtn">
+              <i class="fas fa-trash-alt"></i> Clear All
+            </button>
+          </div>
+        </div>
+
+        <div class="favorites-grid" id="favoritesGrid">
+          <!-- Saved outfits will appear here -->
+        </div>
+
+        <div class="no-favorites" id="noFavorites">
+          <i class="far fa-heart"></i>
+          <h3>No Saved Outfits Yet</h3>
+          <p>Click the heart icon on outfits you love to save them here!</p>
+        </div>
+      </section>
+
+      <!-- ========== REFERENCE IMAGE GALLERY ========== -->
+      <section class="reference-section">
+        <h2 class="reference-title">Style Inspiration Gallery</h2>
+
+        <!-- Spring Gallery -->
+        <div class="season-gallery">
+          <div class="season-header spring-header">
+            <div class="season-icon spring-icon">
+              <i class="fas fa-seedling"></i>
+            </div>
+            <h3 class="season-name">Spring Collection</h3>
+          </div>
+
+          <div class="slider-container" id="springSlider">
+            <div class="slider-wrapper">
+              <!-- Spring images 1-15 -->
+              <div class="gallery-item">
+                <img
+                  src="properti/spring/spring1.jpg"
+                  alt="Spring Pastel Dress"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Pastel Floral Dress</div>
+                  <div class="image-desc">
+                    Soft pink tones with floral patterns
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/spring/spring2.jpg"
+                  alt="Spring Cardigan Set"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Light Cardigan Set</div>
+                  <div class="image-desc">Perfect for cool spring mornings</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/spring/spring3.jpg"
+                  alt="Spring Denim Jacket"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Denim Jacket Look</div>
+                  <div class="image-desc">Casual yet stylish spring outfit</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/spring/spring4.jpg"
+                  alt="Spring Floral Skirt"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Floral Skirt & Blouse</div>
+                  <div class="image-desc">Romantic spring ensemble</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/spring/spring5.jpg"
+                  alt="Spring Garden Party"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Garden Party Dress</div>
+                  <div class="image-desc">Light layers for garden events</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/spring/spring6.jpg"
+                  alt="Spring Casual Outfit"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Casual Spring Day</div>
+                  <div class="image-desc">
+                    Comfortable yet stylish everyday wear
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img src="properti/spring/spring7.jpg" alt="Spring Outfit 7" />
+                <div class="image-overlay">
+                  <div class="image-title">Light Linen Set</div>
+                  <div class="image-desc">
+                    Breathable fabric for spring days
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img src="properti/spring/spring8.jpg" alt="Spring Outfit 8" />
+                <div class="image-overlay">
+                  <div class="image-title">Pastel Blazer</div>
+                  <div class="image-desc">Professional spring look</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img src="properti/spring/spring9.jpg" alt="Spring Outfit 9" />
+                <div class="image-overlay">
+                  <div class="image-title">Floral Maxi Dress</div>
+                  <div class="image-desc">Elegant long dress for events</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/spring/spring10.jpg"
+                  alt="Spring Outfit 10"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Spring Casual Wear</div>
+                  <div class="image-desc">Perfect for weekend outings</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/spring/spring11.jpg"
+                  alt="Spring Outfit 11"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Light Sweater Set</div>
+                  <div class="image-desc">Cozy yet light layers</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/spring/spring12.jpg"
+                  alt="Spring Outfit 12"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Pastel Color Block</div>
+                  <div class="image-desc">Modern spring color combination</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/spring/spring13.jpg"
+                  alt="Spring Outfit 13"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Garden Party Outfit</div>
+                  <div class="image-desc">Floral print with light fabrics</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/spring/spring14.jpg"
+                  alt="Spring Outfit 14"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Spring Casual Chic</div>
+                  <div class="image-desc">Effortlessly stylish spring look</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/spring/spring15.jpg"
+                  alt="Spring Outfit 15"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Light Layered Outfit</div>
+                  <div class="image-desc">
+                    Perfect for changing spring weather
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="slider-controls">
+              <button class="slider-btn prev-btn" data-season="spring">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="slider-btn next-btn" data-season="spring">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+            <div class="slider-dots" id="springDots">
+              <!-- Dots will be generated by JavaScript -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Summer Gallery -->
+        <div class="season-gallery">
+          <div class="season-header summer-header">
+            <div class="season-icon summer-icon">
+              <i class="fas fa-sun"></i>
+            </div>
+            <h3 class="season-name">Summer Collection</h3>
+          </div>
+
+          <div class="slider-container" id="summerSlider">
+            <div class="slider-wrapper">
+              <!-- Summer images 1-15 -->
+              <div class="gallery-item">
+                <img
+                  src="properti/summer/summer1.jpg"
+                  alt="Summer Beach Dress"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Beach Cover-up Dress</div>
+                  <div class="image-desc">Light and airy for beach days</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/summer/summer2.jpg"
+                  alt="Summer Linen Suit"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Linen Suit Set</div>
+                  <div class="image-desc">Breathable summer formal wear</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/summer/summer3.jpg"
+                  alt="Summer Casual Outfit"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Casual Summer Day</div>
+                  <div class="image-desc">Comfortable shorts and tee combo</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img src="properti/summer/summer4.jpg" alt="Summer Sundress" />
+                <div class="image-overlay">
+                  <div class="image-title">Floral Sundress</div>
+                  <div class="image-desc">Perfect for summer parties</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/summer/summer5.jpg"
+                  alt="Summer Pool Party"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Pool Party Outfit</div>
+                  <div class="image-desc">Bright colors for summer fun</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/summer/summer6.jpg"
+                  alt="Summer Vacation Wear"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Vacation Style</div>
+                  <div class="image-desc">Comfortable travel outfit</div>
+                </div>
+              </div>
+              <!-- Additional summer images -->
+              <div class="gallery-item">
+                <img src="properti/summer/summer7.jpg" alt="Summer Outfit 7" />
+                <div class="image-overlay">
+                  <div class="image-title">Light Cotton Dress</div>
+                  <div class="image-desc">Perfect for hot summer days</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img src="properti/summer/summer8.jpg" alt="Summer Outfit 8" />
+                <div class="image-overlay">
+                  <div class="image-title">Summer Evening Wear</div>
+                  <div class="image-desc">Light layers for cool evenings</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img src="properti/summer/summer9.jpg" alt="Summer Outfit 9" />
+                <div class="image-overlay">
+                  <div class="image-title">Beach Party Outfit</div>
+                  <div class="image-desc">Vibrant colors for summer nights</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/summer/summer10.jpg"
+                  alt="Summer Outfit 10"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Summer Casual Chic</div>
+                  <div class="image-desc">Effortless summer style</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/summer/summer11.jpg"
+                  alt="Summer Outfit 11"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Tropical Print Set</div>
+                  <div class="image-desc">Bold patterns for summer</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/summer/summer12.jpg"
+                  alt="Summer Outfit 12"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Light Denim Look</div>
+                  <div class="image-desc">Summer-friendly denim outfit</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/summer/summer13.jpg"
+                  alt="Summer Outfit 13"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Summer Garden Party</div>
+                  <div class="image-desc">Elegant outdoor summer event</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/summer/summer14.jpg"
+                  alt="Summer Outfit 14"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Vacation Resort Wear</div>
+                  <div class="image-desc">Resort-style summer outfit</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/summer/summer15.jpg"
+                  alt="Summer Outfit 15"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Summer Street Style</div>
+                  <div class="image-desc">Urban summer fashion</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="slider-controls">
+              <button class="slider-btn prev-btn" data-season="summer">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="slider-btn next-btn" data-season="summer">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+            <div class="slider-dots" id="summerDots">
+              <!-- Dots will be generated by JavaScript -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Autumn Gallery -->
+        <div class="season-gallery">
+          <div class="season-header autumn-header">
+            <div class="season-icon autumn-icon">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <h3 class="season-name">Autumn Collection</h3>
+          </div>
+
+          <div class="slider-container" id="autumnSlider">
+            <div class="slider-wrapper">
+              <!-- Autumn images 1-15 -->
+              <div class="gallery-item">
+                <img
+                  src="properti/autumn/autumn1.jpg"
+                  alt="Autumn Sweater Outfit"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Cozy Knit Sweater</div>
+                  <div class="image-desc">Warm autumn layers</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img src="properti/autumn/autumn2.jpg" alt="Autumn Plaid Set" />
+                <div class="image-overlay">
+                  <div class="image-title">Plaid Blazer Set</div>
+                  <div class="image-desc">Classic autumn pattern</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/autumn/autumn3.jpg"
+                  alt="Autumn Casual Look"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Casual Autumn Day</div>
+                  <div class="image-desc">Comfortable fall outfit</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/autumn/autumn4.jpg"
+                  alt="Autumn Leather Jacket"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Leather Jacket Look</div>
+                  <div class="image-desc">Edgy autumn style</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/autumn/autumn5.jpg"
+                  alt="Autumn Evening Outfit"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Autumn Evening Wear</div>
+                  <div class="image-desc">Elegant fall event outfit</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/autumn/autumn6.jpg"
+                  alt="Autumn Hiking Outfit"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Outdoor Autumn Wear</div>
+                  <div class="image-desc">Perfect for fall activities</div>
+                </div>
+              </div>
+              <!-- Additional autumn images -->
+              <div class="gallery-item">
+                <img src="properti/autumn/autumn7.jpg" alt="Autumn Outfit 7" />
+                <div class="image-overlay">
+                  <div class="image-title">Warm Layers Set</div>
+                  <div class="image-desc">
+                    Multiple layers for changing weather
+                  </div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img src="properti/autumn/autumn8.jpg" alt="Autumn Outfit 8" />
+                <div class="image-overlay">
+                  <div class="image-title">Autumn Color Palette</div>
+                  <div class="image-desc">Rich earth tones</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img src="properti/autumn/autumn9.jpg" alt="Autumn Outfit 9" />
+                <div class="image-overlay">
+                  <div class="image-title">Cozy Sweater Dress</div>
+                  <div class="image-desc">Warm and stylish</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/autumn/autumn10.jpg"
+                  alt="Autumn Outfit 10"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Autumn Casual Chic</div>
+                  <div class="image-desc">Effortless fall style</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/autumn/autumn11.jpg"
+                  alt="Autumn Outfit 11"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Rustic Autumn Look</div>
+                  <div class="image-desc">Natural autumn tones</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/autumn/autumn12.jpg"
+                  alt="Autumn Outfit 12"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Fall Professional Wear</div>
+                  <div class="image-desc">Office-appropriate autumn outfit</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/autumn/autumn13.jpg"
+                  alt="Autumn Outfit 13"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Autumn Weekend Style</div>
+                  <div class="image-desc">Relaxed fall weekend outfit</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/autumn/autumn14.jpg"
+                  alt="Autumn Outfit 14"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Cozy Autumn Layers</div>
+                  <div class="image-desc">Multiple warm layers</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/autumn/autumn15.jpg"
+                  alt="Autumn Outfit 15"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Fall Festival Outfit</div>
+                  <div class="image-desc">Perfect for autumn events</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="slider-controls">
+              <button class="slider-btn prev-btn" data-season="autumn">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="slider-btn next-btn" data-season="autumn">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+            <div class="slider-dots" id="autumnDots">
+              <!-- Dots will be generated by JavaScript -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Winter Gallery -->
+        <div class="season-gallery">
+          <div class="season-header winter-header">
+            <div class="season-icon winter-icon">
+              <i class="fas fa-snowflake"></i>
+            </div>
+            <h3 class="season-name">Winter Collection</h3>
+          </div>
+
+          <div class="slider-container" id="winterSlider">
+            <div class="slider-wrapper">
+              <!-- Winter images 1-15 -->
+              <div class="gallery-item">
+                <img
+                  src="properti/winter/winter1.jpg"
+                  alt="Winter Coat Outfit"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Wool Coat Ensemble</div>
+                  <div class="image-desc">Warm and stylish winter coat</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/winter/winter2.jpg"
+                  alt="Winter Sweater Set"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Cozy Knit Set</div>
+                  <div class="image-desc">Chunky winter knits</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/winter/winter3.jpg"
+                  alt="Winter Casual Outfit"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Casual Winter Day</div>
+                  <div class="image-desc">Comfortable winter layers</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/winter/winter4.jpg"
+                  alt="Winter Party Outfit"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Holiday Party Dress</div>
+                  <div class="image-desc">Festive winter event wear</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/winter/winter5.jpg"
+                  alt="Winter Ski Outfit"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Ski Resort Style</div>
+                  <div class="image-desc">Functional and fashionable</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/winter/winter6.jpg"
+                  alt="Winter Evening Wear"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Winter Evening Outfit</div>
+                  <div class="image-desc">Elegant cold weather look</div>
+                </div>
+              </div>
+              <!-- Additional winter images -->
+              <div class="gallery-item">
+                <img src="properti/winter/winter7.jpg" alt="Winter Outfit 7" />
+                <div class="image-overlay">
+                  <div class="image-title">Faux Fur Coat</div>
+                  <div class="image-desc">Luxurious winter warmth</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img src="properti/winter/winter8.jpg" alt="Winter Outfit 8" />
+                <div class="image-overlay">
+                  <div class="image-title">Winter Layering</div>
+                  <div class="image-desc">Multiple thermal layers</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img src="properti/winter/winter9.jpg" alt="Winter Outfit 9" />
+                <div class="image-overlay">
+                  <div class="image-title">Winter Casual Chic</div>
+                  <div class="image-desc">Stylish everyday winter wear</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/winter/winter10.jpg"
+                  alt="Winter Outfit 10"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Winter Professional</div>
+                  <div class="image-desc">Office-appropriate winter outfit</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/winter/winter11.jpg"
+                  alt="Winter Outfit 11"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Winter Weekend Style</div>
+                  <div class="image-desc">Cozy weekend layers</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/winter/winter12.jpg"
+                  alt="Winter Outfit 12"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Winter Outerwear</div>
+                  <div class="image-desc">Functional winter coat</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/winter/winter13.jpg"
+                  alt="Winter Outfit 13"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Holiday Season Outfit</div>
+                  <div class="image-desc">Festive winter celebration</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/winter/winter14.jpg"
+                  alt="Winter Outfit 14"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Winter Texture Mix</div>
+                  <div class="image-desc">Playing with different fabrics</div>
+                </div>
+              </div>
+              <div class="gallery-item">
+                <img
+                  src="properti/winter/winter15.jpg"
+                  alt="Winter Outfit 15"
+                />
+                <div class="image-overlay">
+                  <div class="image-title">Cold Weather Chic</div>
+                  <div class="image-desc">Stylish despite the cold</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="slider-controls">
+              <button class="slider-btn prev-btn" data-season="winter">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="slider-btn next-btn" data-season="winter">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+            <div class="slider-dots" id="winterDots">
+              <!-- Dots will be generated by JavaScript -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Style Collections -->
+        <div class="style-collection">
+          <div class="style-header">
+            <div class="style-icon edgy-icon">
+              <i class="fas fa-skull-crossbones"></i>
+            </div>
+            <h3 class="style-name">Edgy & Bold Styles</h3>
+          </div>
+          <p style="color: white; font-family: 'Source Sans Pro', sans-serif">
+            Leather jackets, dark colors, and statement pieces for those who
+            love to stand out.
+          </p>
+        </div>
+
+        <div class="style-collection">
+          <div class="style-header">
+            <div class="style-icon romantic-icon">
+              <i class="fas fa-heart"></i>
+            </div>
+            <h3 class="style-name">Romantic & Feminine</h3>
+          </div>
+          <p style="color: white; font-family: 'Source Sans Pro', sans-serif">
+            Floral prints, soft fabrics, and flowing silhouettes for a dreamy,
+            feminine look.
+          </p>
+        </div>
+
+        <div class="style-collection">
+          <div class="style-header">
+            <div class="style-icon party-icon">
+              <i class="fas fa-glass-cheers"></i>
+            </div>
+            <h3 class="style-name">Party & Celebration</h3>
+          </div>
+          <p style="color: white; font-family: 'Source Sans Pro', sans-serif">
+            Sparkling dresses, bold colors, and eye-catching accessories for
+            special occasions.
+          </p>
+        </div>
+
+        <div class="style-collection">
+          <div class="style-header">
+            <div class="style-icon minimalist-icon">
+              <i class="fas fa-minus"></i>
+            </div>
+            <h3 class="style-name">Minimalist & Clean</h3>
+          </div>
+          <p style="color: white; font-family: 'Source Sans Pro', sans-serif">
+            Neutral colors, simple lines, and quality basics for understated
+            elegance.
+          </p>
+        </div>
+
+        <div class="style-collection">
+          <div class="style-header">
+            <div class="style-icon cozy-icon">
+              <i class="fas fa-mug-hot"></i>
+            </div>
+            <h3 class="style-name">Cozy & Comfortable</h3>
+          </div>
+          <p style="color: white; font-family: 'Source Sans Pro', sans-serif">
+            Soft fabrics, loose fits, and warm layers for ultimate comfort and
+            relaxation.
+          </p>
+        </div>
+
+        <div class="style-collection">
+          <div class="style-header">
+            <div class="style-icon festival-icon">
+              <i class="fas fa-music"></i>
+            </div>
+            <h3 class="style-name">Summer Festival Look</h3>
+          </div>
+          <p style="color: white; font-family: 'Source Sans Pro', sans-serif">
+            Colorful patterns, comfortable footwear, and vibrant accessories
+            perfect for music festivals and outdoor summer events.
+          </p>
+        </div>
+
+        <div class="style-collection">
+          <div class="style-header">
+            <div class="style-icon statement-icon">
+              <i class="fas fa-gem"></i>
+            </div>
+            <h3 class="style-name">Bold Statement Piece</h3>
+          </div>
+          <p style="color: white; font-family: 'Source Sans Pro', sans-serif">
+            Eye-catching accessories, dramatic silhouettes, and unique pieces
+            that transform any outfit into a showstopper.
+          </p>
+        </div>
+      </section>
+      <!-- Outfit Gallery Section -->
+      <section class="outfit-gallery">
+        <h2 class="gallery-title" id="galleryTitle">Recommended Outfits</h2>
+        <div class="outfit-grid" id="outfitGrid">
+          <!-- Outfit cards will be dynamically generated here -->
+        </div>
+        <div class="no-results" id="noResults" style="display: none">
+          <i class="fas fa-search"></i>
+          <h3>No Outfits Found</h3>
+          <p>Try adjusting your filters or search for different keywords.</p>
+          <button
+            class="action-btn reset-btn"
+            id="resetFromNoResults"
+            style="margin-top: 1rem"
+          >
+            <i class="fas fa-redo"></i> Reset All Filters
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // Outfits Database
+      const outfits = [
+        {
+          id: 1,
+          title: "Spring Floral Dream",
+          description:
+            "A beautiful pastel floral dress perfect for spring garden parties and afternoon tea. The lightweight fabric flows gracefully with every movement.",
+          image: "properti/spring.jpg",
+          season: "spring",
+          colors: ["pink", "pastel"],
+          mood: "romantic",
+          tags: ["floral", "dress", "garden", "feminine"],
+          saved: false,
+        },
+        {
+          id: 2,
+          title: "Summer Beach Chic",
+          description:
+            "A breezy linen outfit with vibrant colors that capture the essence of summer. Perfect for beach days and tropical vacations.",
+          image: "properti/summer.jpg",
+          season: "summer",
+          colors: ["blue", "white", "vibrant"],
+          mood: "casual",
+          tags: ["beach", "linen", "vacation", "summer"],
+          saved: false,
+        },
+        {
+          id: 3,
+          title: "Autumn Elegance",
+          description:
+            "Rich earth tones and cozy layers that embody the spirit of autumn. Perfect for crisp fall days and harvest festivals.",
+          image: "properti/autumn.jpg",
+          season: "autumn",
+          colors: ["orange", "brown", "neutral"],
+          mood: "elegant",
+          tags: ["layers", "cozy", "fall", "earth-tones"],
+          saved: false,
+        },
+        {
+          id: 4,
+          title: "Winter Wonderland",
+          description:
+            "A stylish yet warm ensemble featuring a wool coat and cozy accessories. Designed to keep you fashionable even in the coldest weather.",
+          image: "properti/winter.jpg",
+          season: "winter",
+          colors: ["white", "gray", "neutral"],
+          mood: "elegant",
+          tags: ["coat", "warm", "winter", "snow"],
+          saved: false,
+        },
+        {
+          id: 5,
+          title: "Edgy Night Out",
+          description:
+            "Black leather and bold accessories create a striking look for evening events. Command attention with this confident ensemble.",
+          image: "properti/edgy.jpg",
+          season: "all-season",
+          colors: ["black", "red", "vibrant"],
+          mood: "edgy",
+          tags: ["leather", "party", "evening", "bold"],
+          saved: false,
+        },
+        {
+          id: 6,
+          title: "Minimalist Office",
+          description:
+            "Clean lines and neutral colors create a professional yet stylish office look. The perfect balance of comfort and sophistication.",
+          image: "properti/minimalist.jpg",
+          season: "all-season",
+          colors: ["white", "black", "neutral"],
+          mood: "minimalist",
+          tags: ["office", "professional", "simple", "clean"],
+          saved: false,
+        },
+        {
+          id: 7,
+          title: "Romantic Date Night",
+          description:
+            "A flowing red dress with delicate details creates a romantic look perfect for special evenings. Designed to make you feel beautiful.",
+          image: "properti/romantic.jpg",
+          season: "all-season",
+          colors: ["red", "pink", "vibrant"],
+          mood: "romantic",
+          tags: ["date", "evening", "dress", "special"],
+          saved: false,
+        },
+        {
+          id: 8,
+          title: "Cozy Weekend",
+          description:
+            "Comfortable yet stylish outfit perfect for weekend errands or casual meetups with friends. Effortlessly cool and relaxed.",
+          image: "properti/cozy.jpg",
+          season: "all-season",
+          colors: ["blue", "denim", "neutral"],
+          mood: "casual",
+          tags: ["jeans", "casual", "weekend", "comfortable"],
+          saved: false,
+        },
+        {
+          id: 9,
+          title: "Bold Party Look",
+          description:
+            "Metallic accents and dramatic silhouettes create a show-stopping party outfit. Perfect for celebrations and special events.",
+          image: "properti/party.jpg",
+          season: "all-season",
+          colors: ["gold", "purple", "vibrant"],
+          mood: "party",
+          tags: ["sparkle", "celebration", "glam", "evening"],
+          saved: false,
+        },
+      ];
+
+      // State management
+      let currentFilters = {
+        season: [],
+        color: [],
+        mood: [],
+      };
+
+      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      let isViewingFavorites = false;
+
+      // Initialize the page
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize galleries
+        initSliders();
+
+        // Initialize filters
+        initFilters();
+
+        // Initialize outfits
+        renderOutfits(outfits);
+
+        // Update favorites
+        updateFavoritesDisplay();
+
+        // Attach event listeners
+        attachEventListeners();
+
+        // Set up keyboard shortcut for search
+        document
+          .getElementById("keywordSearch")
+          .addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+              searchByKeyword();
+            }
+          });
+      });
+
+      // Initialize image sliders
+      function initSliders() {
+        const seasons = ["spring", "summer", "autumn", "winter"];
+
+        seasons.forEach((season) => {
+          const slider = document.getElementById(`${season}Slider`);
+          const wrapper = slider.querySelector(".slider-wrapper");
+          const items = wrapper.querySelectorAll(".gallery-item");
+          const totalItems = items.length;
+          const itemsPerView = getItemsPerView();
+          let currentIndex = 0;
+
+          // Create dots
+          const dotsContainer = document.getElementById(`${season}Dots`);
+          const totalDots = Math.ceil(totalItems / itemsPerView);
+
+          for (let i = 0; i < totalDots; i++) {
+            const dot = document.createElement("div");
+            dot.className = "slider-dot";
+            if (i === 0) dot.classList.add("active");
+            dot.addEventListener("click", () => goToSlide(season, i));
+            dotsContainer.appendChild(dot);
+          }
+
+          // Update slider function
+          window[
+            `update${season.charAt(0).toUpperCase() + season.slice(1)}Slider`
+          ] = function (index) {
+            const offset = -index * (100 / itemsPerView);
+            wrapper.style.transform = `translateX(${offset}%)`;
+
+            // Update dots
+            dotsContainer.querySelectorAll(".slider-dot").forEach((dot, i) => {
+              dot.classList.toggle("active", i === index);
+            });
+
+            currentIndex = index;
+          };
+
+          // Store current index
+          window[
+            `current${season.charAt(0).toUpperCase() + season.slice(1)}Index`
+          ] = currentIndex;
+        });
+      }
+
+      function getItemsPerView() {
+        if (window.innerWidth <= 480) return 1;
+        if (window.innerWidth <= 768) return 2;
+        return 6;
+      }
+
+      function goToSlide(season, index) {
+        const totalItems = document.querySelectorAll(
+          `#${season}Slider .gallery-item`
+        ).length;
+        const itemsPerView = getItemsPerView();
+        const totalSlides = Math.ceil(totalItems / itemsPerView) - 1;
+
+        if (index < 0) index = totalSlides;
+        if (index > totalSlides) index = 0;
+
+        window[
+          `update${season.charAt(0).toUpperCase() + season.slice(1)}Slider`
+        ](index);
+      }
+
+      // Filter button handling
+      function initFilters() {
+        document.querySelectorAll(".filter-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const filterType = this.dataset.filter;
+            const value = this.dataset.value;
+
+            // Toggle active state
+            this.classList.toggle("active");
+
+            // Update filters
+            if (this.classList.contains("active")) {
+              if (!currentFilters[filterType].includes(value)) {
+                currentFilters[filterType].push(value);
+              }
+            } else {
+              currentFilters[filterType] = currentFilters[filterType].filter(
+                (item) => item !== value
+              );
+            }
+
+            console.log("Current filters:", currentFilters);
+          });
+        });
+      }
+
+      // Render outfit cards
+      function renderOutfits(outfitsToRender) {
+        const grid = document.getElementById("outfitGrid");
+        const noResults = document.getElementById("noResults");
+        const galleryTitle = document.getElementById("galleryTitle");
+
+        if (outfitsToRender.length === 0) {
+          grid.innerHTML = "";
+          noResults.style.display = "block";
+          return;
+        }
+
+        noResults.style.display = "none";
+
+        if (isViewingFavorites) {
+          galleryTitle.textContent = "My Saved Outfits";
+        } else {
+          galleryTitle.textContent =
+            currentFilters.season.length ||
+            currentFilters.color.length ||
+            currentFilters.mood.length
+              ? "Filtered Outfits"
+              : "Recommended Outfits";
+        }
+
+        grid.innerHTML = outfitsToRender
+          .map((outfit) => {
+            const isSaved = favorites.includes(outfit.id);
+            const seasonArray = Array.isArray(outfit.season)
+              ? outfit.season
+              : [outfit.season];
+            const colorArray = Array.isArray(outfit.colors)
+              ? outfit.colors
+              : [outfit.colors];
+
+            return `
+                        <div class="outfit-card" data-id="${outfit.id}">
+              <button class="save-btn" onclick="toggleFavorite(${outfit.id})">
+                <i class="${isSaved ? "fas" : "far"} fa-heart"></i>
+              </button>
+              <img src="${outfit.image}" alt="${
+              outfit.title
+            }" class="outfit-image ${getBorderColor(outfit.colors)}">
+              <div class="outfit-info">
+                <div class="outfit-tags">
+                  ${seasonArray
+                    .map(
+                      (season) =>
+                        `<span class="tag tag-season">${season}</span>`
+                    )
+                    .join("")}
+                  ${colorArray
+                    .slice(0, 2)
+                    .map(
+                      (color) => `<span class="tag tag-color">${color}</span>`
+                    )
+                    .join("")}
+                  <span class="tag tag-mood">${outfit.mood}</span>
+                </div>
+                <h3 class="outfit-title">${outfit.title}</h3>
+                <p class="outfit-description">${outfit.description}</p>
+                ${
+                  outfit.tags
+                    ? `<div class="color-palette" style="margin-top: 0.5rem;">
+                  ${getColorPalette(outfit.colors)}
+                </div>`
+                    : ""
+                }
+                ${
+                  isSaved
+                    ? '<div class="saved-badge"><i class="fas fa-check"></i> Saved</div>'
+                    : ""
+                }
+              </div>
+            </div>
+          `;
+          })
+          .join("");
+      }
+
+      function getBorderColor(colors) {
+        const colorMap = {
+          red: "border-red",
+          blue: "border-blue",
+          green: "border-green",
+          yellow: "border-yellow",
+          purple: "border-purple",
+          orange: "border-orange",
+          pink: "border-pink",
+          black: "border-black",
+          white: "border-white",
+          gray: "border-black",
+        };
+
+        for (const color of colors) {
+          if (colorMap[color]) return colorMap[color];
+        }
+        return "border-blue"; // default
+      }
+
+      function getColorPalette(colors) {
+        const colorClasses = {
+          red: "color-red",
+          blue: "color-blue",
+          green: "color-green",
+          yellow: "color-yellow",
+          purple: "color-purple",
+          orange: "color-orange",
+          pink: "color-pink",
+          black: "color-black",
+          white: "color-white",
+          gray: "color-black",
+          brown: "color-orange",
+          gold: "color-yellow",
+          denim: "color-blue",
+          pastel: "color-pink",
+          vibrant: "color-red",
+          neutral: "color-black",
+        };
+
+        return colors
+          .map(
+            (color) =>
+              `<div class="color-dot ${
+                colorClasses[color] || "color-blue"
+              }" title="${color}"></div>`
+          )
+          .join("");
+      }
+
+      // Toggle favorite
+      function toggleFavorite(outfitId) {
+        const index = favorites.indexOf(outfitId);
+
+        if (index === -1) {
+          favorites.push(outfitId);
+          showNotification("Outfit saved to favorites!", "success");
+        } else {
+          favorites.splice(index, 1);
+          showNotification("Outfit removed from favorites", "info");
+        }
+
+        // Save to localStorage
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+
+        // Update UI
+        updateFavoritesDisplay();
+
+        // Re-render current view
+        if (isViewingFavorites) {
+          showFavorites();
+        } else {
+          filterOutfits();
+        }
+      }
+
+      function showNotification(message, type) {
+        // Create notification element
+        const notification = document.createElement("div");
+        notification.className = `notification ${type}`;
+        notification.innerHTML = `
+          <i class="fas fa-${
+            type === "success" ? "check-circle" : "info-circle"
+          }"></i>
+          <span>${message}</span>
+        `;
+
+        // Add styles
+        notification.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: ${type === "success" ? "#78b58b" : "#4a5fd8"};
+          color: white;
+          padding: 1rem 1.5rem;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-family: 'Source Sans Pro', sans-serif;
+          font-weight: 600;
+          z-index: 1000;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+          animation: slideIn 0.3s ease;
+        `;
+
+        // Add animation keyframes
+        if (!document.querySelector("#notification-styles")) {
+          const style = document.createElement("style");
+          style.id = "notification-styles";
+          style.textContent = `
+            @keyframes slideIn {
+              from { transform: translateX(100%); opacity: 0; }
+              to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes fadeOut {
+              from { opacity: 1; }
+              to { opacity: 0; }
+            }
+          `;
+          document.head.appendChild(style);
+        }
+
+        document.body.appendChild(notification);
+
+        // Remove after 3 seconds
+        setTimeout(() => {
+          notification.style.animation = "fadeOut 0.3s ease";
+          setTimeout(() => notification.remove(), 300);
+        }, 3000);
+      }
+
+      // Update favorites display
+      function updateFavoritesDisplay() {
+        const count = favorites.length;
+        document.getElementById("favoritesCount").textContent = count;
+
+        const favoritesGrid = document.getElementById("favoritesGrid");
+        const noFavorites = document.getElementById("noFavorites");
+
+        if (count === 0) {
+          favoritesGrid.innerHTML = "";
+          noFavorites.style.display = "block";
+          return;
+        }
+
+        noFavorites.style.display = "none";
+
+        // Get favorite outfits
+        const favoriteOutfits = outfits.filter((outfit) =>
+          favorites.includes(outfit.id)
+        );
+
+        // Display first 4 favorites
+        const displayOutfits = favoriteOutfits.slice(0, 4);
+
+        favoritesGrid.innerHTML = displayOutfits
+          .map(
+            (outfit) => `
+          <div class="outfit-card">
+            <button class="save-btn" onclick="toggleFavorite(${outfit.id})">
+              <i class="fas fa-heart"></i>
+            </button>
+            <img src="${outfit.image}" alt="${
+              outfit.title
+            }" class="outfit-image ${getBorderColor(outfit.colors)}">
+            <div class="outfit-info">
+              <div class="outfit-tags">
+                <span class="tag tag-season">${outfit.season}</span>
+                <span class="tag tag-color">${outfit.colors[0]}</span>
+                <span class="tag tag-mood">${outfit.mood}</span>
+              </div>
+              <h3 class="outfit-title">${outfit.title}</h3>
+              <div class="saved-badge">
+                <i class="fas fa-check"></i> Saved
+              </div>
+            </div>
+          </div>
+        `
+          )
+          .join("");
+      }
+
+      // Filter outfits based on current filters
+      function filterOutfits() {
+        let filteredOutfits = outfits;
+
+        // Apply filters
+        if (currentFilters.season.length > 0) {
+          filteredOutfits = filteredOutfits.filter((outfit) => {
+            const outfitSeasons = Array.isArray(outfit.season)
+              ? outfit.season
+              : [outfit.season];
+            return currentFilters.season.some(
+              (filterSeason) =>
+                outfitSeasons.includes(filterSeason) ||
+                filterSeason === "all-season"
+            );
+          });
+        }
+
+        if (currentFilters.color.length > 0) {
+          filteredOutfits = filteredOutfits.filter((outfit) => {
+            const outfitColors = Array.isArray(outfit.colors)
+              ? outfit.colors
+              : [outfit.colors];
+            return currentFilters.color.some((filterColor) =>
+              outfitColors.includes(filterColor)
+            );
+          });
+        }
+
+        if (currentFilters.mood.length > 0) {
+          filteredOutfits = filteredOutfits.filter((outfit) =>
+            currentFilters.mood.includes(outfit.mood)
+          );
+        }
+
+        renderOutfits(filteredOutfits);
+      }
+
+      // Search by keyword
+      function searchByKeyword() {
+        const searchInput = document.getElementById("keywordSearch");
+        const keyword = searchInput.value.toLowerCase().trim();
+
+        if (!keyword) {
+          showNotification("Please enter a search term", "info");
+          return;
+        }
+
+        const filteredOutfits = outfits.filter(
+          (outfit) =>
+            outfit.title.toLowerCase().includes(keyword) ||
+            outfit.description.toLowerCase().includes(keyword) ||
+            outfit.tags.some((tag) => tag.toLowerCase().includes(keyword)) ||
+            outfit.mood.toLowerCase().includes(keyword) ||
+            outfit.colors.some((color) => color.toLowerCase().includes(keyword))
+        );
+
+        if (filteredOutfits.length === 0) {
+          showNotification(`No outfits found for "${keyword}"`, "info");
+        } else {
+          showNotification(
+            `Found ${filteredOutfits.length} outfit(s) for "${keyword}"`,
+            "success"
+          );
+        }
+
+        isViewingFavorites = false;
+        document.getElementById("viewFavoritesBtn").style.display = "none";
+        document.getElementById("viewAllBtn").style.display = "block";
+
+        renderOutfits(filteredOutfits);
+      }
+
+      // Show favorites only
+      function showFavorites() {
+        isViewingFavorites = true;
+        const favoriteOutfits = outfits.filter((outfit) =>
+          favorites.includes(outfit.id)
+        );
+
+        document.getElementById("viewFavoritesBtn").style.display = "none";
+        document.getElementById("viewAllBtn").style.display = "block";
+
+        renderOutfits(favoriteOutfits);
+      }
+
+      // Show all outfits
+      function showAllOutfits() {
+        isViewingFavorites = false;
+
+        document.getElementById("viewFavoritesBtn").style.display = "block";
+        document.getElementById("viewAllBtn").style.display = "none";
+
+        filterOutfits();
+      }
+
+      // Clear all filters
+      function resetFilters() {
+        // Reset filter buttons
+        document.querySelectorAll(".filter-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+
+        // Reset filter state
+        currentFilters = {
+          season: [],
+          color: [],
+          mood: [],
+        };
+
+        // Reset search input
+        document.getElementById("keywordSearch").value = "";
+
+        // Show all outfits
+        isViewingFavorites = false;
+        document.getElementById("viewFavoritesBtn").style.display = "block";
+        document.getElementById("viewAllBtn").style.display = "none";
+
+        renderOutfits(outfits);
+        showNotification("All filters have been reset", "info");
+      }
+
+      // Get random outfit
+      function getRandomOutfit() {
+        const randomIndex = Math.floor(Math.random() * outfits.length);
+        const randomOutfit = outfits[randomIndex];
+
+        // Highlight the random outfit
+        const outfitCards = document.querySelectorAll(".outfit-card");
+        outfitCards.forEach((card) => {
+          card.style.boxShadow = "none";
+          card.style.transform = "none";
+        });
+
+        const randomCard = document.querySelector(
+          `.outfit-card[data-id="${randomOutfit.id}"]`
+        );
+        if (randomCard) {
+          randomCard.style.boxShadow =
+            "0 0 0 3px #9d4edd, 0 15px 30px rgba(157, 78, 221, 0.3)";
+          randomCard.style.transform = "translateY(-5px)";
+
+          // Scroll to the random outfit
+          randomCard.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+
+        showNotification(`Random outfit: ${randomOutfit.title}`, "success");
+      }
+
+      // Get random combo (outfit based on random filters)
+      function getRandomCombo() {
+        // Get all possible filter values
+        const seasons = ["spring", "summer", "autumn", "winter", "all-season"];
+        const colors = [
+          "red",
+          "blue",
+          "green",
+          "yellow",
+          "purple",
+          "pink",
+          "orange",
+          "black",
+          "white",
+          "neutral",
+          "pastel",
+          "vibrant",
+        ];
+        const moods = [
+          "casual",
+          "elegant",
+          "edgy",
+          "romantic",
+          "bold",
+          "minimalist",
+          "party",
+          "work",
+        ];
+
+        // Pick random filters
+        const randomSeason =
+          seasons[Math.floor(Math.random() * seasons.length)];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        const randomMood = moods[Math.floor(Math.random() * moods.length)];
+
+        // Apply random filters
+        resetFilters(); // Clear first
+
+        // Activate random filter buttons
+        document.querySelectorAll(".filter-btn").forEach((btn) => {
+          if (
+            btn.dataset.filter === "season" &&
+            btn.dataset.value === randomSeason
+          ) {
+            btn.click();
+          }
+          if (
+            btn.dataset.filter === "color" &&
+            btn.dataset.value === randomColor
+          ) {
+            btn.click();
+          }
+          if (
+            btn.dataset.filter === "mood" &&
+            btn.dataset.value === randomMood
+          ) {
+            btn.click();
+          }
+        });
+
+        // Show notification
+        showNotification(
+          `Random combo: ${randomSeason}, ${randomColor}, ${randomMood}`,
+          "success"
+        );
+
+        // Apply filters
+        filterOutfits();
+      }
+
+      // Clear all favorites
+      function clearFavorites() {
+        if (favorites.length === 0) {
+          showNotification("No favorites to clear", "info");
+          return;
+        }
+
+        if (confirm("Are you sure you want to clear all saved outfits?")) {
+          favorites = [];
+          localStorage.setItem("favorites", JSON.stringify(favorites));
+          updateFavoritesDisplay();
+
+          if (isViewingFavorites) {
+            showFavorites();
+          }
+
+          showNotification("All favorites cleared", "info");
+        }
+      }
+
+      // Attach event listeners
+      function attachEventListeners() {
+        // Filter buttons
+        document
+          .getElementById("searchOutfits")
+          .addEventListener("click", filterOutfits);
+
+        // Random buttons
+        document
+          .getElementById("randomOutfitSimple")
+          .addEventListener("click", getRandomOutfit);
+        document
+          .getElementById("randomOutfitCombo")
+          .addEventListener("click", getRandomCombo);
+
+        // Reset buttons
+        document
+          .getElementById("resetFilters")
+          .addEventListener("click", resetFilters);
+        document
+          .getElementById("resetFromNoResults")
+          .addEventListener("click", resetFilters);
+
+        // Favorites buttons
+        document
+          .getElementById("viewAllBtn")
+          .addEventListener("click", showAllOutfits);
+        document
+          .getElementById("viewFavoritesBtn")
+          .addEventListener("click", showFavorites);
+        document
+          .getElementById("clearFavoritesBtn")
+          .addEventListener("click", clearFavorites);
+
+        // Slider controls
+        document.querySelectorAll(".prev-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const season = this.dataset.season;
+            const currentIndex =
+              window[
+                `current${
+                  season.charAt(0).toUpperCase() + season.slice(1)
+                }Index`
+              ];
+            const totalItems = document.querySelectorAll(
+              `#${season}Slider .gallery-item`
+            ).length;
+            const itemsPerView = getItemsPerView();
+            const totalSlides = Math.ceil(totalItems / itemsPerView) - 1;
+
+            goToSlide(
+              season,
+              currentIndex > 0 ? currentIndex - 1 : totalSlides
+            );
+          });
+        });
+
+        document.querySelectorAll(".next-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const season = this.dataset.season;
+            const currentIndex =
+              window[
+                `current${
+                  season.charAt(0).toUpperCase() + season.slice(1)
+                }Index`
+              ];
+            const totalItems = document.querySelectorAll(
+              `#${season}Slider .gallery-item`
+            ).length;
+            const itemsPerView = getItemsPerView();
+            const totalSlides = Math.ceil(totalItems / itemsPerView) - 1;
+
+            goToSlide(
+              season,
+              currentIndex < totalSlides ? currentIndex + 1 : 0
+            );
+          });
+        });
+
+        // Responsive slider updates
+        window.addEventListener("resize", function () {
+          const seasons = ["spring", "summer", "autumn", "winter"];
+          seasons.forEach((season) => {
+            const currentIndex =
+              window[
+                `current${
+                  season.charAt(0).toUpperCase() + season.slice(1)
+                }Index`
+              ] || 0;
+            goToSlide(season, currentIndex);
+          });
+        });
+      }
+
+      // Add some additional outfit data for more variety
+      outfits.push(
+        {
+          id: 11,
+          title: "Summer Festival Look",
+          description:
+            "Colorful and vibrant outfit inspired by summer music festivals. Features bold patterns and comfortable footwear.",
+          image: "properti/festival.jpg",
+          season: "summer",
+          colors: ["vibrant", "multicolor", "blue"],
+          mood: "party",
+          tags: ["festival", "music", "colorful", "fun"],
+          saved: false,
+        },
+
+        {
+          id: 12,
+          title: "Bold Statement Piece",
+          description:
+            "Single statement piece that transforms any outfit. Perfect for making an impression at social gatherings.",
+          image: "properti/bold.jpg",
+          season: "all-season",
+          colors: ["gold", "black", "vibrant"],
+          mood: "bold",
+          tags: ["statement", "accessory", "glam", "evening"],
+          saved: false,
+        }
+      );
+
+      // Initialize with all outfits
+      renderOutfits(outfits);
+    </script>
+
+    <!-- Additional CSS for notifications -->
+    <style>
+      .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #78b58b;
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: "Source Sans Pro", sans-serif;
+        font-weight: 600;
+        z-index: 1000;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        animation: slideIn 0.3s ease;
+      }
+
+      .notification.info {
+        background: #4a5fd8;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+
+      /* Smooth transitions for outfit cards */
+      .outfit-card {
+        transition: all 0.3s ease;
+      }
+
+      /* Loading animation */
+      .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 3rem;
+        grid-column: 1 / -1;
+      }
+
+      .loading::after {
+        content: "";
+        width: 40px;
+        height: 40px;
+        border: 4px solid #f7e8a1;
+        border-top-color: #2c3fab;
+        border-radius: 50%;
+        animation: loading 1s linear infinite;
+      }
+
+      @keyframes loading {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </body>
+</html>

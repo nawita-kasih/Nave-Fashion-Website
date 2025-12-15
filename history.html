@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>History Fashion Magazine</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Anton&family=Source+Sans+Pro:wght@300;400;600&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      /* STYLING HALAMAN (TETAP SESUAI WARNA & FONT KAMU) */
+      .magazine-container {
+        background: rgba(255, 255, 255, 0.15);
+        width: 80%;
+        margin: 7rem auto;
+        padding: 3rem;
+        border: 3px solid #f7e8a1;
+        border-radius: 10px;
+        text-align: center;
+      }
+
+      .magazine-title {
+        font-family: "Cinzel Decorative", serif;
+        font-size: 4rem;
+        color: #f7e8a1;
+        border-bottom: 3px solid #fff;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+      }
+
+      .magazine-subtitle {
+        margin-top: -10px;
+        font-size: 1.2rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #f7e8a5;
+        text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+      }
+
+      .section-header {
+        font-family: "Anton", sans-serif;
+        margin-top: 2.5rem;
+        font-size: 2.2rem;
+        text-transform: uppercase;
+        color: #f7e8a1;
+        border-bottom: 2px solid #fff;
+        text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+      }
+
+      .magazine-text {
+        max-width: 600px;
+        margin: 1rem auto 2rem auto;
+        font-family: "Source Sans Pro", sans-serif;
+        color: #fff;
+        line-height: 1.6;
+      }
+
+      .magazine-img-large {
+        width: 85%;
+        max-height: 400px;
+        object-fit: cover;
+        border: 2px solid #fff;
+        border-radius: 10px;
+        margin: 1.5rem 0;
+      }
+
+      .two-column {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        text-align: left;
+        margin-top: 2rem;
+      }
+
+      .small-box {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1rem;
+        border: 2px solid #f7e8a1;
+        border-radius: 10px;
+      }
+
+      .small-box img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 0.7rem;
+      }
+
+      @media (max-width: 768px) {
+        .two-column {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a class="active">History</a></li>
+        <li><a href="rec.html">Recommendation</a></li>
+        <li><a href="funfact.html">Fun Fact</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <div class="cinzel">NAVÈ</div>
+    </nav>
+
+    <!-- MAGAZINE LAYOUT -->
+    <div class="magazine-container">
+
+    <div class="magazine-title">SEJARAH FASHION</div>
+    <div class="magazine-subtitle">Perjalanan Busana Dari Masa ke Masa</div>
+
+    <!-- SECTION 1 -->
+    <h2 class="section-header">Era Fashion Kuno</h2>
+    <p class="magazine-text">
+        Pada era Mesir kuno, pakaian tidak hanya melindungi tubuh, tetapi menjadi
+        simbol status dan spiritualitas. Para bangsawan mengenakan linen putih
+        yang bersih serta perhiasan emas sebagai lambang kekuasaan. Sementara itu,
+        di Tiongkok kuno, kain sutra menjadi kemewahan yang hanya dipakai oleh
+        kalangan istana. Setiap elemen busana memiliki makna dan identitas budaya.
+    </p>
+    
+    <!-- Gambar placeholder – ganti nanti -->
+    <img src="properti/ancient.jpg" alt="Ancient Fashion" class="magazine-img-large">
+
+ <h2 class="section-header">Era Fashion Modern & Masa Depan</h2>
+    <!-- SECTION 2 - TWO COLUMN -->
+    <div class="two-column">
+
+
+  <div class="small-box">
+            <h3 style="color:#f7e8a1; font-family:Anton;text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);">Fashion Istana Kerajaan</h3>
+            <img src="properti/royal.jpg">
+            <p class="magazine-text" style="text-align:left;">
+                Di Eropa abad ke-17 sampai ke-19, fashion berubah menjadi simbol
+                kekuasaan yang dipamerkan melalui gaun besar, korset, renda, dan
+                ornamen mahal. Busana menjadi bagian penting dari etiket istana.
+                Siapa pun yang memasuki lingkungan kerajaan harus menunjukkan
+                kelas sosialnya melalui pakaian.
+            </p>
+        </div>
+
+<div class="small-box">
+            <h3 style="color:#f7e8a1; font-family:Anton;text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);">Revolusi Mode 1920-an</h3>
+            <img src="properti/1920.jpg">
+            <p class="magazine-text" style="text-align:left;">
+                Pada era ini, perempuan mulai membebaskan diri dari aturan busana
+                yang ketat. Rok lebih pendek, rambut gaya bob, dan gaun flapper
+                yang ringan menjadi tren. Mode berubah menjadi bentuk ekspresi
+                kebebasan, kepercayaan diri, dan gaya hidup modern.
+            </p>
+        </div>
+
+        <div class="small-box">
+            <h3 style="color:#f7e8a1; font-family:Anton;text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);">Mini Skirt 1960-an</h3>
+            <img src="properti/1960.jpg" alt="Mini Skirt 1960s">
+            <p class="magazine-text" style="text-align:left;">
+                Tahun 60-an membawa semangat baru dengan ikon seperti mini skirt
+                yang diciptakan oleh Mary Quant. Busana menjadi lebih eksperimental,
+                geometris, dan terinspirasi oleh seni pop. Ini menandai pergeseran
+                mode dari Haute Couture yang eksklusif ke gaya yang lebih muda dan siap pakai.
+            </p>
+        </div>
+
+        <div class="small-box">
+            <h3 style="color:#f7e8a1; font-family:Anton; text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);">Gaya Grunge 1990-an</h3>
+            <img src="properti/1990.jpg" alt="Grunge 1990s">
+            <p class="magazine-text" style="text-align:left;">
+                Sebagai bentuk penolakan terhadap kemewahan era sebelumnya, gaya Grunge
+                muncul dengan pakaian longgar, flannel, dan sepatu bot yang kasual.
+                Ini mencerminkan subkultur musik dan menyuarakan sikap anti-fashion.
+                Mode menjadi lebih otentik dan tidak terstruktur.
+            </p>
+        </div>
+
+        <div class="small-box">
+            <h3 style="color:#f7e8a1; font-family:Anton;text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);">Dampak Fast Fashion</h3>
+            <img src="properti/fastfashion.jpg" alt="Fast Fashion">
+            <p class="magazine-text" style="text-align:left;">
+                Awal abad ke-21 ditandai dengan munculnya 'Fast Fashion', yaitu tren
+                produksi pakaian yang cepat dan murah. Ini membuat mode lebih terjangkau
+                namun memicu perdebatan serius tentang keberlanjutan dan etika pekerja
+                di industri garmen.
+            </p>
+        </div>
+
+        <div class="small-box">
+            <h3 style="color:#f7e8a1; font-family:Anton;text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);">Mode Berkelanjutan</h3>
+            <img src="properti/sustainable.jpg" alt="Sustainable Fashion">
+            <p class="magazine-text" style="text-align:left;">
+                Menanggapi masalah lingkungan, fashion masa depan semakin mengarah
+                ke mode berkelanjutan (Sustainable Fashion). Fokusnya adalah pada
+                bahan daur ulang, produksi etis, dan konsep 'slow fashion' untuk
+                mengurangi limbah.
+            </p>
+        </div>
+
+    </div>
+
+
+    </div>
+
+</div>
+
+    </div>
+
+
+  </body>
+   <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <div class="footer-logo cinzel">NAVÉ</div>
+          <p class="footer-tagline">
+            Your personal moodboard. Discovering style, one story at a time.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Get Style News</h4>
+          <p>Fashion insights & recommendations direct to your inbox.</p>
+          <form class="subscribe-form">
+            <input type="email" placeholder="YOUR E-MAIL" />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+
+        <div class="footer-col">
+          <h4>Creator</h4>
+          <p>
+            Nawita Kasih Prastia<br />Putri Kukuh Andini<br />Qaesya Novalia
+            Putri
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p>
+            <a href="mailto:naveshion@gmail.com">naveshion@gmail.com</a><br />
+            +62 813 8994 0015
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p class="copyright">&copy; 2025 NAVÉ. All Rights Reserved</p>
+        <div class="footer-legal-links">
+          <a href="#">PRIVACY POLICY</a>
+          <a href="#">TERMS AND CONDITIONS</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
