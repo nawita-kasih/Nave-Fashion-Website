@@ -1352,6 +1352,26 @@
         </div>
       </section>
 
+      <!-- Outfit Gallery Section -->
+      <section class="outfit-gallery">
+        <h2 class="gallery-title" id="galleryTitle">Recommended Outfits</h2>
+        <div class="outfit-grid" id="outfitGrid">
+          <!-- Outfit cards will be dynamically generated here -->
+        </div>
+        <div class="no-results" id="noResults" style="display: none">
+          <i class="fas fa-search"></i>
+          <h3>No Outfits Found</h3>
+          <p>Try adjusting your filters or search for different keywords.</p>
+          <button
+            class="action-btn reset-btn"
+            id="resetFromNoResults"
+            style="margin-top: 1rem"
+          >
+            <i class="fas fa-redo"></i> Reset All Filters
+          </button>
+        </div>
+      </section>
+
       <!-- ========== REFERENCE IMAGE GALLERY ========== -->
       <section class="reference-section">
         <h2 class="reference-title">Style Inspiration Gallery</h2>
@@ -2131,26 +2151,51 @@
           </p>
         </div>
       </section>
-      <!-- Outfit Gallery Section -->
-      <section class="outfit-gallery">
-        <h2 class="gallery-title" id="galleryTitle">Recommended Outfits</h2>
-        <div class="outfit-grid" id="outfitGrid">
-          <!-- Outfit cards will be dynamically generated here -->
-        </div>
-        <div class="no-results" id="noResults" style="display: none">
-          <i class="fas fa-search"></i>
-          <h3>No Outfits Found</h3>
-          <p>Try adjusting your filters or search for different keywords.</p>
-          <button
-            class="action-btn reset-btn"
-            id="resetFromNoResults"
-            style="margin-top: 1rem"
-          >
-            <i class="fas fa-redo"></i> Reset All Filters
-          </button>
-        </div>
-      </section>
     </main>
+
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <div class="footer-logo cinzel">NAVÈ</div>
+          <p class="footer-tagline">
+            Your personal moodboard. Discovering style, one story at a time.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get Style News</h4>
+          <p>Fashion insights & recommendations direct to your inbox.</p>
+          <form class="subscribe-form">
+            <input type="email" placeholder="YOUR E-MAIL" />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+
+        <div class="footer-col">
+          <h4>Creator</h4>
+          <p>
+            Nawita Kasih Prastia<br />Putri Kukuh Andini<br />Qaesya Novalia
+            Putri
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p>
+            <a href="mailto:naveshion@gmail.com">naveshion@gmail.com</a><br />
+            +62 813 8994 0015
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p class="copyright">&copy; 2025 NAVÈ. All Rights Reserved</p>
+        <div class="footer-legal-links">
+          <a href="#">PRIVACY POLICY</a>
+          <a href="#">TERMS AND CONDITIONS</a>
+        </div>
+      </div>
+    </footer>
 
     <script>
       // Outfits Database

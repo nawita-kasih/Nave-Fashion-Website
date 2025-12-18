@@ -477,438 +477,148 @@ main {
   box-shadow: 0 5px 15px rgba(157, 78, 221, 0.4);
 }
 
-/* ====================== GLOBAL MOBILE FIXES ====================== */
+/* ====================== FIX HEADER MOBILE - HORIZONTAL COMPACT ====================== */
 
-/* Viewport fix untuk mobile */
-@viewport {
-  width: device-width;
-  zoom: 1;
-}
-
-/* Base mobile styles */
 @media screen and (max-width: 768px) {
-  /* Perbaikan umum */
-  html {
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-  }
-
-  body {
-    overflow-x: hidden;
-    width: 100%;
-    position: relative;
-  }
-
-  /* FIX NAVBAR MOBILE */
+  /* HEADER FIX: Horizontal dan tidak numpuk */
   nav {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    width: 100%;
-    padding: 10px 15px;
-    background: rgba(44, 63, 171, 0.95);
+    height: 60px; /* Tinggi tetap */
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(44, 63, 171, 0.98);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     z-index: 1000;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+    border-bottom: 2px solid #f7e8a1;
+    overflow: hidden;
   }
 
+  /* Logo di kiri */
+  .cinzel {
+    font-size: 22px;
+    margin: 0;
+    white-space: nowrap;
+    flex-shrink: 0;
+    order: 1;
+  }
+
+  /* Menu di kanan - horizontal scroll */
   .nav-links {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    width: auto;
     order: 2;
-    margin-top: 10px;
-    padding: 10px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: none;
+    margin-top: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 5px 0;
+    flex: 1;
+    justify-content: flex-end;
+    padding-left: 10px;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+    height: 0;
   }
 
   .nav-links li {
+    flex-shrink: 0;
     margin: 0;
-  }
-
-  .nav-links li a {
-    font-size: 13px;
-    padding: 8px 12px;
-    display: block;
-    white-space: nowrap;
-  }
-
-  .cinzel {
-    font-size: 24px;
-    order: 1;
-    text-align: center;
-    width: 100%;
-    margin-bottom: 0;
-  }
-
-  /* FIX MAIN CONTENT SPACING */
-  main {
-    padding-top: 120px !important; /* Space untuk fixed nav */
-    min-height: calc(100vh - 200px);
-  }
-
-  /* FIX HERO SECTION MOBILE */
-  .hero-title {
-    flex-direction: column;
-    font-size: 42px;
-    text-align: center;
-    padding: 20px 15px;
-    line-height: 1.2;
-  }
-
-  .hero-title span {
-    display: block;
-    margin: 5px 0;
-  }
-
-  .hero-icon {
-    height: 40px;
-    width: auto;
-    margin: 10px 0;
-  }
-
-  .btns {
-    margin: 20px auto 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  .btn {
-    padding: 12px 30px;
-    font-size: 16px;
-    border-radius: 25px;
-  }
-
-  /* FIX INTRO TEXT MOBILE */
-  .intro-text {
-    font-size: 16px;
-    line-height: 1.6;
-    padding: 0 20px;
-    text-align: justify;
-    text-indent: 1.5em;
-    margin: 30px auto;
-    max-width: 100%;
-  }
-
-  /* FIX CARD CONTAINER MOBILE */
-  .card-container {
-    grid-template-columns: 1fr;
-    gap: 25px;
-    padding: 20px;
-  }
-
-  .card-container a {
-    width: 100%;
-  }
-
-  .info-card {
-    flex-direction: column;
-    padding: 20px;
-    border-radius: 15px;
-  }
-
-  .card-image {
-    width: 100%;
-    height: 200px;
-    margin-bottom: 20px;
-  }
-
-  .card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .card-title {
-    font-size: 24px;
-    margin: 10px 0;
-  }
-
-  .card-description {
-    font-size: 15px;
-    line-height: 1.5;
-  }
-
-  .card-learn-list ul {
-    font-size: 14px;
-    padding-left: 20px;
-  }
-
-  /* FIX FOOTER MOBILE */
-  .site-footer {
-    padding: 30px 20px 20px;
-    margin-top: 40px;
-  }
-
-  .footer-container {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-
-  .footer-col {
-    text-align: center;
-    padding: 0 10px;
-  }
-
-  .footer-logo.cinzel {
-    font-size: 28px;
-  }
-
-  .footer-bottom-bar {
-    flex-direction: column;
-    gap: 15px;
-    text-align: center;
-  }
-
-  .footer-legal-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-  }
-
-  .footer-legal-links a {
-    margin: 0;
-    font-size: 12px;
-  }
-
-  /* FIX FUNFACT PAGE MOBILE */
-  .funfact-section {
-    padding: 40px 20px;
-    margin: 20px;
-    border-radius: 20px;
-  }
-
-  .funfact-title {
-    font-size: 32px;
-    margin-bottom: 30px;
-  }
-
-  .funfact-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .funfact-card {
-    padding: 25px 20px;
-    border-radius: 15px;
-  }
-
-  .funfact-number {
-    font-size: 40px !important;
-  }
-
-  .funfact-text {
-    font-size: 16px;
-    line-height: 1.5;
-  }
-}
-
-/* ====================== TABLET (768px - 1024px) ====================== */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  nav {
-    padding: 15px 20px;
-  }
-
-  .nav-links {
-    gap: 20px;
-  }
-
-  .cinzel {
-    font-size: 36px;
-  }
-
-  .hero-title {
-    font-size: 60px;
-  }
-
-  .hero-icon {
-    height: 50px;
-  }
-
-  .card-container {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 95%;
-  }
-
-  .info-card {
-    flex-direction: column;
-  }
-
-  .card-image {
-    width: 100%;
-    height: 200px;
-  }
-
-  .footer-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .funfact-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* ====================== VERY SMALL MOBILE (360px kebawah) ====================== */
-@media screen and (max-width: 360px) {
-  .hero-title {
-    font-size: 32px;
-  }
-
-  .hero-icon {
-    height: 30px;
-  }
-
-  .intro-text {
-    font-size: 14px;
-    padding: 0 15px;
-  }
-
-  .card-title {
-    font-size: 20px;
-  }
-
-  .funfact-title {
-    font-size: 26px;
-  }
-
-  .funfact-number {
-    font-size: 35px !important;
-  }
-
-  .nav-links {
-    gap: 5px;
   }
 
   .nav-links li a {
     font-size: 11px;
-    padding: 6px 8px;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    white-space: nowrap;
+    display: block;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+  }
+
+  .nav-links li a:hover,
+  .nav-links li a:active {
+    background: rgba(247, 232, 161, 0.25);
+    border-color: #f7e8a1;
+    color: #f7e8a1;
+    transform: translateY(-1px);
+  }
+
+  /* Active page highlight */
+  .nav-links li a[href*="index.html"],
+  .nav-links li a.active {
+    background: #f7e8a1;
+    color: #2c3fab;
+    font-weight: bold;
+    border-color: #f7e8a1;
+  }
+
+  /* MAIN CONTENT FIX: Jangan ketutup header */
+  main {
+    padding-top: 70px !important; /* Sesuaikan dengan tinggi header */
+    margin-top: 0;
+    min-height: calc(100vh - 70px);
+  }
+
+  /* Pastikan semua halaman tidak ketutup */
+  .magazine-container,
+  .rec-hero,
+  .about-hero,
+  .funfact-section {
+    padding-top: 80px !important;
   }
 }
 
-/* ====================== LANDSCAPE MOBILE ====================== */
-@media screen and (max-height: 500px) and (orientation: landscape) {
+/* ====================== VERY SMALL MOBILE (360px kebawah) ====================== */
+@media screen and (max-width: 480px) {
   nav {
-    padding: 8px 15px;
+    height: 55px;
+    padding: 0 10px;
+  }
+
+  .cinzel {
+    font-size: 18px;
+  }
+
+  .nav-links li a {
+    font-size: 10px;
+    padding: 5px 8px;
   }
 
   main {
-    padding-top: 80px !important;
-  }
-
-  .hero-title {
-    font-size: 36px;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .hero-title span {
-    margin: 0 5px;
-  }
-
-  .hero-icon {
-    height: 30px;
-    margin: 0 5px;
-  }
-
-  .card-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .info-card {
-    padding: 15px;
+    padding-top: 65px !important;
   }
 }
 
-/* ====================== TOUCH DEVICE OPTIMIZATIONS ====================== */
-@media (hover: none) and (pointer: coarse) {
-  /* Touch-friendly buttons */
-  button,
-  .btn,
-  .filter-btn,
-  .action-btn,
-  .save-btn,
-  .slider-btn,
+/* ====================== LANDSCAPE MODE FIX ====================== */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  nav {
+    height: 50px;
+  }
+
   .nav-links li a {
-    min-height: 44px;
-    min-width: 44px;
-    cursor: pointer;
+    font-size: 10px;
+    padding: 4px 8px;
   }
 
-  /* Increase touch targets */
-  .nav-links li a {
-    padding: 12px 16px;
-  }
-
-  .filter-btn {
-    padding: 12px 20px;
-  }
-
-  /* Remove hover effects on touch */
-  .info-card:hover,
-  .funfact-card:hover,
-  .outfit-card:hover {
-    transform: none;
-  }
-
-  /* Always show image overlay on mobile */
-  .image-overlay {
-    transform: translateY(0) !important;
-    opacity: 1 !important;
-  }
-}
-
-/* ====================== DARK MODE SUPPORT ====================== */
-@media (prefers-color-scheme: dark) {
-  .outfit-card {
-    background: #2c3fab;
-    color: white;
-  }
-
-  .outfit-title {
-    color: #f7e8a1;
-  }
-
-  .outfit-description {
-    color: #ccc;
-  }
-}
-
-/* ====================== PRINT STYLES ====================== */
-@media print {
-  nav,
-  .btns,
-  .subscribe-form,
-  .footer-bottom-bar,
-  .save-btn,
-  .filter-section {
-    display: none !important;
-  }
-
-  body {
-    background: white !important;
-    color: black !important;
-  }
-
-  .hero-title {
-    color: black !important;
-    font-size: 24pt;
-  }
-
-  .intro-text {
-    color: black !important;
-  }
-
-  .card-container a {
-    break-inside: avoid;
+  main {
+    padding-top: 60px !important;
   }
 }
