@@ -623,74 +623,74 @@ main {
   }
 }
 
-/* ====================== FIX TAMBAHAN MOBILE & HEADER ====================== */
+/* ====================== FIX HEADER & LAYOUT MOBILE ====================== */
 @media screen and (max-width: 768px) {
-  /* Header Fix agar tidak tumpang tindih */
+  /* Menyejajarkan Header secara vertikal namun rapi */
   nav {
-    height: auto;
-    min-height: 60px;
-    flex-direction: column-reverse; /* Logo di bawah menu jika layar sangat sempit */
-    padding: 10px;
-  }
-
-  .nav-links {
-    justify-content: center;
-    width: 100%;
-    margin: 0 0 10px 0;
-    flex-wrap: wrap;
-    gap: 5px;
-  }
-
-  .cinzel {
-    font-size: 22px;
-  }
-
-  /* Hero Section Home Fix */
-  .homepage .hero-title {
+    position: relative; /* Ganti dari fixed agar tidak menutupi konten */
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 15px 10px;
+    height: auto;
+    background: #2c3fab; /* Warna solid agar teks terbaca */
+  }
+
+  .cinzel {
+    font-size: 24px;
+    margin-bottom: 15px;
     text-align: center;
-    font-size: 2.5rem !important;
-    padding: 20px 10px !important;
   }
 
-  .homepage .hero-icon {
-    height: 45px !important;
-    margin: 10px 0 !important;
+  /* Membuat Menu Navigasi sejajar horizontal dan bisa digeser (scroll) */
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-right: 0;
+    overflow-x: auto; /* Mengizinkan geser jika layar terlalu sempit */
+    padding-bottom: 5px;
+    white-space: nowrap;
   }
 
-  .homepage .intro-text {
-    font-size: 1rem;
-    padding: 0 15px;
-    margin: 20px 0;
+  .nav-links li a {
+    font-size: 11px;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
   }
 
-  /* Card Layout Fix (Menumpuk Vertikal) */
-  .homepage .card-container {
-    grid-template-columns: 1fr;
+  /* Mengatur ulang jarak konten agar tidak terpotong */
+  main {
+    padding-top: 20px !important; /* Jarak standar karena nav sudah relative */
+  }
+
+  /* Memperbaiki ukuran teks Hero agar tidak berantakan */
+  .homepage .hero-title {
+    font-size: 2.2rem !important;
+    text-align: center;
+    display: block; /* Menghindari flex yang merusak baris */
     padding: 10px;
   }
 
-  .homepage .info-card {
+  .homepage .hero-icon {
+    height: 40px !important;
+    vertical-align: middle;
+    margin: 5px;
+  }
+
+  /* Memastikan kartu konten (History/Recommendation) menumpuk vertikal */
+  .info-card {
     flex-direction: column !important;
     height: auto !important;
-    min-height: unset !important;
+    padding: 15px;
   }
 
-  .homepage .card-image {
+  .card-image {
     width: 100% !important;
     height: 200px !important;
-  }
-
-  .homepage .card-content {
-    padding: 15px !important;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .nav-links li a {
-    font-size: 10px;
-    padding: 5px 8px;
+    margin-bottom: 15px;
   }
 }
