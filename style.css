@@ -477,69 +477,52 @@ main {
   box-shadow: 0 5px 15px rgba(157, 78, 221, 0.4);
 }
 
-/* ====================== FIX HEADER MOBILE - HORIZONTAL COMPACT ====================== */
+/* ====================== RESPONSIVE GLOBAL (MOBILE & TABLET) ====================== */
 
 @media screen and (max-width: 768px) {
-  /* HEADER FIX: Horizontal dan tidak numpuk */
+  /* HEADER FIX: Menggunakan sticky agar tetap di atas tapi tidak menumpuk konten */
   nav {
-    position: fixed;
+    position: sticky; /* Ganti fixed ke sticky */
     top: 0;
     left: 0;
     right: 0;
-    height: 60px; /* Tinggi tetap */
-    padding: 0 15px;
+    height: auto;
+    min-height: 80px;
+    padding: 10px 15px;
     display: flex;
+    flex-direction: column !important; /* Paksa tumpuk vertikal: Menu dulu baru Logo */
     align-items: center;
-    justify-content: space-between;
-    background: rgba(44, 63, 171, 0.98);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    justify-content: center;
+    background: rgba(44, 63, 171, 1); /* Warna solid agar tidak transparan */
     z-index: 1000;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
     border-bottom: 2px solid #f7e8a1;
-    overflow: hidden;
   }
 
-  /* Logo di kiri */
+  /* Logo NAVÈ */
   .cinzel {
-    font-size: 22px;
-    margin: 0;
-    white-space: nowrap;
-    flex-shrink: 0;
-    order: 1;
+    font-size: 24px;
+    margin: 5px 0 0 0;
+    order: 2; /* Logo diletakkan di bawah menu */
   }
 
-  /* Menu di kanan - horizontal scroll */
+  /* Menu Links */
   .nav-links {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 8px;
     margin: 0;
-    padding: 0;
-    width: auto;
-    order: 2;
-    border-top: none;
-    margin-top: 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
     padding: 5px 0;
-    flex: 1;
-    justify-content: flex-end;
-    padding-left: 10px;
+    width: 100%;
+    order: 1; /* Menu diletakkan di atas logo */
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none; /* Hilangkan scrollbar Firefox */
   }
 
   .nav-links::-webkit-scrollbar {
-    display: none;
-    height: 0;
-  }
-
-  .nav-links li {
-    flex-shrink: 0;
-    margin: 0;
+    display: none; /* Hilangkan scrollbar Chrome/Safari */
   }
 
   .nav-links li a {
@@ -547,150 +530,73 @@ main {
     padding: 6px 10px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 15px;
-    white-space: nowrap;
-    display: block;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
+    border: 1px solid rgba(247, 232, 161, 0.3);
   }
 
-  .nav-links li a:hover,
-  .nav-links li a:active {
-    background: rgba(247, 232, 161, 0.25);
-    border-color: #f7e8a1;
-    color: #f7e8a1;
-    transform: translateY(-1px);
-  }
-
-  /* Active page highlight */
-  .nav-links li a[href*="index.html"],
-  .nav-links li a.active {
-    background: #f7e8a1;
-    color: #2c3fab;
-    font-weight: bold;
-    border-color: #f7e8a1;
-  }
-
-  /* MAIN CONTENT FIX: Jangan ketutup header */
+  /* MAIN CONTENT FIX: Reset padding agar tidak ketutup header */
   main {
-    padding-top: 70px !important; /* Sesuaikan dengan tinggi header */
+    padding-top: 20px !important; /* Jarak kecil karena nav sudah menggunakan sticky */
     margin-top: 0;
-    min-height: calc(100vh - 70px);
   }
 
-  /* Pastikan semua halaman tidak ketutup */
-  .magazine-container,
-  .rec-hero,
-  .about-hero,
-  .funfact-section {
-    padding-top: 80px !important;
-  }
-}
-
-/* ====================== VERY SMALL MOBILE (360px kebawah) ====================== */
-@media screen and (max-width: 480px) {
-  nav {
-    height: 55px;
-    padding: 0 10px;
-  }
-
-  .cinzel {
-    font-size: 18px;
-  }
-
-  .nav-links li a {
-    font-size: 10px;
-    padding: 5px 8px;
-  }
-
-  main {
-    padding-top: 65px !important;
-  }
-}
-
-/* ====================== LANDSCAPE MODE FIX ====================== */
-@media screen and (max-height: 500px) and (orientation: landscape) {
-  nav {
-    height: 50px;
-  }
-
-  .nav-links li a {
-    font-size: 10px;
-    padding: 4px 8px;
-  }
-
-  main {
-    padding-top: 60px !important;
-  }
-}
-
-/* ====================== FIX HEADER & LAYOUT MOBILE ====================== */
-@media screen and (max-width: 768px) {
-  /* Menyejajarkan Header secara vertikal namun rapi */
-  nav {
-    position: relative; /* Ganti dari fixed agar tidak menutupi konten */
+  /* Hero Section Home */
+  .hero-title {
+    font-size: 2.5rem !important;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 15px 10px;
-    height: auto;
-    background: #2c3fab; /* Warna solid agar teks terbaca */
+    padding: 20px 10px !important;
   }
 
-  .cinzel {
-    font-size: 24px;
-    margin-bottom: 15px;
-    text-align: center;
+  .hero-icon {
+    height: 45px !important;
+    margin: 10px 0 !important;
   }
 
-  /* Membuat Menu Navigasi sejajar horizontal dan bisa digeser (scroll) */
-  .nav-links {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    margin-right: 0;
-    overflow-x: auto; /* Mengizinkan geser jika layar terlalu sempit */
-    padding-bottom: 5px;
-    white-space: nowrap;
+  .intro-text {
+    font-size: 1rem;
+    padding: 0 15px;
+    margin-top: 10px;
   }
 
-  .nav-links li a {
-    font-size: 11px;
-    padding: 6px 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-  }
-
-  /* Mengatur ulang jarak konten agar tidak terpotong */
-  main {
-    padding-top: 20px !important; /* Jarak standar karena nav sudah relative */
-  }
-
-  /* Memperbaiki ukuran teks Hero agar tidak berantakan */
-  .homepage .hero-title {
-    font-size: 2.2rem !important;
-    text-align: center;
-    display: block; /* Menghindari flex yang merusak baris */
+  /* Cards Layout */
+  .card-container {
+    grid-template-columns: 1fr;
     padding: 10px;
+    gap: 15px;
   }
 
-  .homepage .hero-icon {
-    height: 40px !important;
-    vertical-align: middle;
-    margin: 5px;
-  }
-
-  /* Memastikan kartu konten (History/Recommendation) menumpuk vertikal */
   .info-card {
     flex-direction: column !important;
     height: auto !important;
-    padding: 15px;
+    min-height: unset !important;
   }
 
   .card-image {
     width: 100% !important;
     height: 200px !important;
-    margin-bottom: 15px;
+    flex: none;
+  }
+
+  /* Page-specific containers (About/History/etc) */
+  .magazine-container,
+  .about-hero,
+  .rec-hero,
+  .funfact-section {
+    padding-top: 20px !important;
+    margin-top: 20px !important;
+  }
+}
+
+/* ====================== SMALL MOBILE (480px) ====================== */
+@media screen and (max-width: 480px) {
+  .nav-links li a {
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+
+  .cinzel {
+    font-size: 20px;
   }
 }
