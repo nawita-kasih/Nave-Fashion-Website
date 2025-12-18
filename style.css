@@ -623,201 +623,74 @@ main {
   }
 }
 
-/* ====================== FIX KHUSUS INDEX.HTML ====================== */
-
-/* Fix Header untuk Homepage */
-.homepage nav {
-  background: linear-gradient(135deg, #2c3fab 0%, #4a5fd8 100%) !important;
-  border-bottom: 3px solid #f7e8a1;
-}
-
-.homepage .nav-links li a[href="index.html"] {
-  background: #f7e8a1 !important;
-  color: #2c3fab !important;
-  font-weight: bold;
-  border: 2px solid #f7e8a1;
-}
-
-/* Fix Hero Section Index.html */
-.homepage .hero-title {
-  margin-top: 40px !important;
-  padding-top: 30px !important;
-}
-
-.homepage main {
-  padding-top: 80px !important;
-}
-
-/* Fix Card Layout Index.html */
-.homepage .card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
-  padding: 30px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.homepage .info-card {
-  height: 100%;
-  min-height: 500px;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 15px;
-  overflow: hidden;
-}
-
-.homepage .card-image {
-  height: 220px;
-  width: 100%;
-  flex-shrink: 0;
-}
-
-.homepage .card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.homepage .card-content {
-  flex: 1;
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-}
-
-.homepage .card-title {
-  font-size: 1.8rem;
-  margin: 15px 0;
-  line-height: 1.2;
-}
-
-.homepage .card-description {
-  flex: 1;
-  margin-bottom: 20px;
-  line-height: 1.6;
-}
-
-/* Fix Intro Text Spacing */
-.homepage .intro-text {
-  max-width: 900px;
-  margin: 40px auto 50px;
-  padding: 0 30px;
-  font-size: 1.2rem;
-  line-height: 1.8;
-}
-
-/* ====================== MOBILE FIX INDEX.HTML ====================== */
+/* ====================== FIX TAMBAHAN MOBILE & HEADER ====================== */
 @media screen and (max-width: 768px) {
-  /* Header Mobile Fix untuk Home */
-  .homepage nav {
-    height: 65px;
-    padding: 0 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  /* Header Fix agar tidak tumpang tindih */
+  nav {
+    height: auto;
+    min-height: 60px;
+    flex-direction: column-reverse; /* Logo di bawah menu jika layar sangat sempit */
+    padding: 10px;
   }
 
-  .homepage .cinzel {
-    font-size: 24px;
-    margin: 0;
-    flex-shrink: 0;
-  }
-
-  .homepage .nav-links {
-    display: flex;
+  .nav-links {
+    justify-content: center;
+    width: 100%;
+    margin: 0 0 10px 0;
+    flex-wrap: wrap;
     gap: 5px;
-    overflow-x: auto;
-    padding: 5px 0;
-    flex: 1;
-    justify-content: flex-end;
-    margin-left: 10px;
   }
 
-  .homepage .nav-links li a {
-    font-size: 11px;
-    padding: 6px 10px;
-    white-space: nowrap;
+  .cinzel {
+    font-size: 22px;
   }
 
-  /* Hero Section Mobile Fix */
+  /* Hero Section Home Fix */
   .homepage .hero-title {
-    margin-top: 20px !important;
-    padding-top: 20px !important;
-    font-size: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    font-size: 2.5rem !important;
+    padding: 20px 10px !important;
   }
 
   .homepage .hero-icon {
-    height: 40px;
-    margin: 10px;
+    height: 45px !important;
+    margin: 10px 0 !important;
   }
 
-  .homepage .btns {
-    margin: 25px auto 0;
-  }
-
-  .homepage .btn {
-    padding: 12px 30px;
-    font-size: 1rem;
-  }
-
-  /* Intro Text Mobile Fix */
   .homepage .intro-text {
     font-size: 1rem;
-    padding: 0 20px;
-    margin: 30px auto 40px;
-    text-align: justify;
+    padding: 0 15px;
+    margin: 20px 0;
   }
 
-  /* Cards Mobile Fix */
+  /* Card Layout Fix (Menumpuk Vertikal) */
   .homepage .card-container {
     grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 20px;
+    padding: 10px;
   }
 
   .homepage .info-card {
-    min-height: auto;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: unset !important;
   }
 
   .homepage .card-image {
-    height: 200px;
+    width: 100% !important;
+    height: 200px !important;
+  }
+
+  .homepage .card-content {
+    padding: 15px !important;
   }
 }
 
-/* ====================== TABLET FIX INDEX.HTML ====================== */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  .homepage .card-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .homepage .hero-title {
-    font-size: 4rem;
-  }
-}
-
-/* ====================== VERY SMALL MOBILE FIX ====================== */
 @media screen and (max-width: 480px) {
-  .homepage nav {
-    height: 60px;
-  }
-
-  .homepage .cinzel {
-    font-size: 20px;
-  }
-
-  .homepage .nav-links li a {
+  .nav-links li a {
     font-size: 10px;
     padding: 5px 8px;
-  }
-
-  .homepage .hero-title {
-    font-size: 2rem;
-  }
-
-  .homepage .hero-icon {
-    height: 35px;
   }
 }
