@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, viewport-fit=cover"
+    />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap"
@@ -18,6 +21,42 @@
     />
 
     <link rel="stylesheet" href="style.css" />
+    <style>
+      @media screen and (max-width: 768px) {
+        /* FIX FUNFACT PAGE MOBILE */
+        .funfact-section {
+          padding: 100px 20px 40px;
+          margin: 0;
+          border-radius: 0;
+        }
+
+        .funfact-title {
+          font-size: 32px;
+          margin-bottom: 30px;
+        }
+
+        .funfact-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .funfact-card {
+          padding: 25px 20px;
+          border-radius: 15px;
+        }
+
+        .funfact-number {
+          font-size: 40px !important;
+          line-height: 1;
+          margin-bottom: 15px;
+        }
+
+        .funfact-text {
+          font-size: 16px;
+          line-height: 1.5;
+        }
+      }
+    </style>
     <title>NAVÉ - Fun Fact</title>
   </head>
   <body>

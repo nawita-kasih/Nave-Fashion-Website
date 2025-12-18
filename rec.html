@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, viewport-fit=cover"
+    />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap"
@@ -920,6 +923,217 @@
       @media (max-width: 480px) {
         .gallery-item {
           flex: 0 0 100%; /* 1 item visible on very small screens */
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        /* FIX RECOMMENDATION PAGE MOBILE */
+        .rec-hero {
+          padding: 100px 20px 40px;
+          border-radius: 0 0 30px 30px;
+        }
+
+        .rec-hero-title {
+          font-size: 32px;
+          margin-bottom: 15px;
+        }
+
+        .rec-hero-subtitle {
+          font-size: 16px;
+          line-height: 1.4;
+          margin-bottom: 20px;
+        }
+
+        .filter-section {
+          margin: 20px;
+          padding: 25px 20px;
+          border-radius: 15px;
+        }
+
+        .filter-title {
+          font-size: 24px;
+          margin-bottom: 20px;
+        }
+
+        .search-bar {
+          flex-direction: column;
+          gap: 10px;
+          margin-bottom: 25px;
+        }
+
+        .search-bar input {
+          width: 100%;
+          padding: 14px 20px;
+          font-size: 16px;
+        }
+
+        .search-bar button {
+          width: 100%;
+          padding: 14px;
+          justify-content: center;
+        }
+
+        .filter-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .filter-group {
+          padding: 20px;
+        }
+
+        .filter-options {
+          justify-content: center;
+        }
+
+        .filter-btn {
+          padding: 10px 15px;
+          margin: 5px;
+        }
+
+        .filter-actions {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .action-btn {
+          width: 100%;
+          padding: 16px;
+          margin: 5px 0;
+        }
+
+        .favorites-section {
+          margin: 20px;
+          padding: 25px 20px;
+        }
+
+        .favorites-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 15px;
+        }
+
+        .favorites-title {
+          font-size: 22px;
+        }
+
+        .favorites-actions {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+
+        .view-all-btn,
+        .view-favorites-btn,
+        .clear-favorites-btn {
+          flex: 1;
+          min-width: 120px;
+          padding: 12px;
+        }
+
+        .favorites-grid,
+        .outfit-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .reference-section {
+          padding: 0 20px 40px;
+        }
+
+        .reference-title {
+          font-size: 26px;
+          margin-bottom: 30px;
+        }
+
+        .season-gallery {
+          margin-bottom: 40px;
+        }
+
+        .season-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+          margin-bottom: 20px;
+        }
+
+        .season-icon {
+          width: 50px;
+          height: 50px;
+          font-size: 24px;
+        }
+
+        .season-name {
+          font-size: 22px;
+        }
+
+        .slider-container {
+          margin: 0 -10px;
+          padding: 0 10px;
+        }
+
+        .gallery-item {
+          flex: 0 0 calc(50% - 10px);
+          height: 200px;
+        }
+
+        .slider-controls {
+          margin-top: 20px;
+        }
+
+        .slider-btn {
+          width: 45px;
+          height: 45px;
+        }
+
+        .outfit-gallery {
+          padding: 0 20px 40px;
+        }
+
+        .gallery-title {
+          font-size: 26px;
+          margin-bottom: 25px;
+        }
+
+        .outfit-card {
+          max-width: 100%;
+        }
+
+        .outfit-image {
+          height: 250px;
+        }
+
+        .no-results,
+        .no-favorites {
+          padding: 40px 20px;
+        }
+
+        .no-results i,
+        .no-favorites i {
+          font-size: 48px;
+        }
+
+        .style-collection {
+          padding: 20px;
+          margin-bottom: 20px;
+        }
+
+        .style-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+          margin-bottom: 15px;
+        }
+
+        .style-icon {
+          width: 45px;
+          height: 45px;
+          font-size: 20px;
+        }
+
+        .style-name {
+          font-size: 20px;
         }
       }
     </style>

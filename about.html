@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, viewport-fit=cover">
 
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap"
@@ -298,6 +298,123 @@
           flex-wrap: wrap;
         }
       }
+
+      @media screen and (max-width: 768px) {
+  /* FIX ABOUT PAGE MOBILE */
+  .about-hero {
+    padding: 100px 20px 40px;
+    border-radius: 0 0 30px 30px;
+  }
+  
+  .about-hero-title {
+    font-size: 32px;
+    margin-bottom: 15px;
+  }
+  
+  .about-hero-subtitle {
+    font-size: 18px;
+  }
+  
+  .about-container {
+    padding: 0 20px;
+  }
+  
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    margin-bottom: 30px;
+  }
+  
+  .about-text {
+    padding: 25px 20px;
+  }
+  
+  .about-text h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  .about-text p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  
+  .creator-profiles {
+    padding: 25px 20px;
+    margin-bottom: 30px;
+  }
+  
+  .creator-profiles h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .creators-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .creator-card {
+    padding: 20px;
+  }
+  
+  .creator-photo {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .creator-name {
+    font-size: 18px;
+  }
+  
+  .creator-bio {
+    font-size: 14px;
+  }
+  
+  .connect-section {
+    padding: 30px 20px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+  }
+  
+  .connect-section h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  .connect-section p {
+    font-size: 15px;
+    margin-bottom: 25px;
+  }
+  
+  .social-links {
+    gap: 10px;
+    margin-bottom: 25px;
+  }
+  
+  .social-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+  
+  .cta-button {
+    padding: 14px 30px;
+    font-size: 16px;
+  }
+  
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  .photo-placeholder {
+    aspect-ratio: 1/1;
+    font-size: 12px;
+    padding: 10px;
+  }
+}
     </style>
     <title>NAVÉ - About</title>
   </head>

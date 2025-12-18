@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, viewport-fit=cover">
     <title>History Fashion Magazine</title>
 
     <link
@@ -95,6 +95,73 @@
           grid-template-columns: 1fr;
         }
       }
+
+      @media screen and (max-width: 768px) {
+  /* FIX HISTORY PAGE MOBILE */
+  .magazine-container {
+    width: 95%;
+    margin: 100px auto 40px;
+    padding: 20px 15px;
+    border: 2px solid #f7e8a1;
+  }
+  
+  .magazine-title {
+    font-size: 32px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  
+  .magazine-subtitle {
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+  }
+  
+  .section-header {
+    font-size: 22px;
+    margin-top: 30px;
+  }
+  
+  .magazine-text {
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 15px auto 25px;
+    padding: 0 10px;
+  }
+  
+  .magazine-img-large {
+    width: 100%;
+    height: 250px;
+    margin: 20px 0;
+  }
+  
+  .two-column {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .small-box {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .small-box img {
+    height: 180px;
+    object-fit: cover;
+  }
+  
+  .small-box h3 {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  /* Navigation fix untuk history page */
+  nav .nav-links li a.active {
+    background: rgba(247, 232, 161, 0.2);
+    border-radius: 5px;
+  }
+}
     </style>
   </head>
   <body>
